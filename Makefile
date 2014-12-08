@@ -5,3 +5,8 @@ test.out: test_main.cpp String.o
 
 String.o: String.cpp String.h
 	g++ -o String.o -c String.cpp -Wall
+
+clean:
+	rm *.o
+
+	
