@@ -38,6 +38,13 @@ String::String(void)
 {
 }
 
+String::String(const String& stringToAppend)
+{
+  string=stringToAppend.string;
+  size=stringToAppend.size;
+  capacity=stringToAppend.capacity;
+}
+
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
