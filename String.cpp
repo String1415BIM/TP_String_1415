@@ -45,11 +45,19 @@ String::String(char * stringToAppend)
   capacity= NULL;
 }
 
+String::String(const String& stringToAppend)
+{
+  string=stringToAppend.string;
+  size=stringToAppend.size;
+  capacity=stringToAppend.capacity;
+}
+
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
 String::~String(void)
 {
+  delete [] string;
 }
 
 // ===========================================================================
