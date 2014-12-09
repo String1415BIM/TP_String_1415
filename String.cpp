@@ -34,8 +34,15 @@
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
-String::String(void)
+
+
+//Constructor from a c-string
+String::String(char * stringToAppend)
 {
+  string = stringToAppend;
+  size = NULL;	
+  MAX_SIZE = 100;
+  capacity= NULL;
 }
 
 // ===========================================================================
