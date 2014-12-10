@@ -72,6 +72,7 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+
 size_t String:: Capacity (void) const
 {
   return capacity*sizeof(char);
@@ -85,9 +86,9 @@ void String :: Reserve (size_t n)
 }
 
 
-char * String::c_str(void)
+char * String::c_str(void) const
 {
-	return string;
+    return string;
 }
 
 // ===========================================================================

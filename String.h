@@ -96,8 +96,10 @@ class String
 
    
     /* Returns a pointer on a c-string. It is a getter on string variable*/
-    char * c_str(void);
 
+    char * c_str(void) const;
+
+   
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
