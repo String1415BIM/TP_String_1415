@@ -72,15 +72,16 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
-
+size_t String:: Capacity (void) const
+{
+  return capacity*sizeof(char);
+}
 
 void String :: Reserve (size_t n)
 {
   if(capacity<n) {
     capacity=n;
   }
-  printf("%d \n", capacity);
-
 }
 
 
