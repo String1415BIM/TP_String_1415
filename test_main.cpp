@@ -65,10 +65,6 @@ int main(int argc, char* argv[])
   printf("%d\n",test_cstring->size());
 
 
-  printf("%d \n",test_cstring->Capacity());
-  test_cstring->Reserve(10);
-  printf("%d \n",test_cstring->Capacity());
-
   //Test on reserve, capacity, empty methods
   printf("capacite 1 : %d \n",test_cstring->capacity());
   test_cstring->reserve(10);
@@ -79,9 +75,8 @@ int main(int argc, char* argv[])
   printf("booleen : %d \n",test_cstring->empty());
 
 
->>>>>>> 3bb4092973a9cad41ae924c4bd7c71269667b445
-
   return 0;
+
 }
 
 

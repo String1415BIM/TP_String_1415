@@ -50,8 +50,8 @@ String::String(const char * s)
 {
 
   Data = new char [Capacity];
-  memcpy(String,s,Capacity*sizeof(*Data));	
-  Size =SizeCalculation();
+  memcpy(Data,s,Capacity*sizeof(*Data));	
+  Size =sizeCalculation();
   Capacity= 0;
 
 }
