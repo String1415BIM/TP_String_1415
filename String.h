@@ -72,7 +72,8 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
-
+    /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes. */
+    int Capacity (void) const;
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
