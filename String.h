@@ -60,7 +60,8 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    unsigned int GetSize(void) const ;
+    inline unsigned int GetSize(void) const;
+    inline char * GetString(void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -109,9 +110,14 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-unsigned int String::GetSize(void) const
+inline unsigned int String::GetSize(void) const
 {
     return size;
+}
+
+inline char * String::GetString(void) const
+{
+    return string;
 }
 // ===========================================================================
 //                              Setters' definitions
