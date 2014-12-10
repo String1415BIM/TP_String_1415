@@ -84,7 +84,10 @@ class String
     bool Empty (void) const;
     
     /* Returns a pointer on a c-string. It is a getter on string variable*/
-    char * c_str(void);
+    char * c_str(void) const;
+
+    /*Returns the size of the c-string*/
+    //unsigned int size(void);
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
