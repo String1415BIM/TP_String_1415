@@ -40,9 +40,8 @@
 String::String(char * stringToAppend)
 {
   string = stringToAppend;
-  size = NULL;	
-  MAX_SIZE = 100;
-  capacity= NULL;
+  size = 0;	
+  capacity= 0;
 }
 
 String::String(const String& stringToAppend)
