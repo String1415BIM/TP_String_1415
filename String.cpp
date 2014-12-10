@@ -17,6 +17,7 @@
 //                                 Project Files
 // ===========================================================================
 #include "String.h"
+#include <string.h>
 
 
 
@@ -45,9 +46,10 @@ String::String(void)
 
 
 //Constructor from a c-string
-String::String(char * stringToAppend)
+String::String(const char * s)
 {
-  string = stringToAppend;
+  string = new char [capacity];
+  memcpy(string,s,capacity*sizeof(*string));
   size = 0;	
   capacity= 0;
 }
@@ -65,6 +67,8 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+
+
 
 // ===========================================================================
 //                                Protected Methods
