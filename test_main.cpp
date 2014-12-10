@@ -12,6 +12,7 @@
 // ===========================================================================
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "String.h"
 #include <stdbool.h>
 
@@ -46,21 +47,29 @@ int main(int argc, char* argv[])
   printf("Hello World !\n");
   String  test =String();
 
+
+  //test du c-string constructor
   char mot[8] ="Bonjour";
-  String test_cstring =String(mot);
-  printf("size=%d, word= %s\n", test_cstring.GetSize(), test_cstring.GetString());
+  String* test_cstring = new String(mot);
+  printf("size=%d, word= %s\n", test_cstring->getSize(), test_cstring->getString());
+
 
   //Test for the copy constructor
   String model=String();
   String test_copy=String(model);
 
-  //Test on c_str & size methods
-  printf("%s\n",test_cstring.c_str()); 
-  printf("%d\n",test_cstring.Size());
+  printf("%s\n",test_cstring->c_str()); 
+  printf("%d\n",test_cstring->size());
 
-  printf("%d \n",test_cstring.Capacity());
-  test_cstring.Reserve(10);
-  printf("%d \n",test_cstring.Capacity());
+
+  //Test on reserve, capacity, empty methods
+  printf("capacite 1 : %d \n",test_cstring->capacity());
+  test_cstring->reserve(10);
+  printf("capacite 2 : %d \n",test_cstring->capacity());
+
+  test_cstring->reserve();
+  printf("size : %d \n", test_cstring->size());
+  printf("booleen : %d \n",test_cstring->empty());
 
   //Test on clear method
   char word[]="Link list";
@@ -69,9 +78,8 @@ int main(int argc, char* argv[])
   testo.clear();
   printf("%s, size=%d\n", testo.c_str(), testo.Size());
 
+  return 0;
 
-
-    return 0;
 }
 
 

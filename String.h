@@ -15,6 +15,7 @@
 // ===========================================================================
 #include <cstdio>
 #include <cstdlib>
+#include <string.h>
 
 
 
@@ -50,10 +51,11 @@ class String
     String(void);
 
     //c-string constructor
-    String(char * stringToAppend);
+    String(const char * s);
     
     //copy consructor
     String(const String& str);
+
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -62,8 +64,8 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    inline unsigned int GetSize(void) const;
-    inline char * GetString(void) const;
+    inline unsigned int getSize(void) const;
+    inline char * getString(void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -77,27 +79,29 @@ class String
     // =======================================================================
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
-    size_t Capacity (void) const;
+    size_t capacity (void) const;
 
     /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
      */
-    bool Empty (void) const;
+    bool empty (void) const;
 
     /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
       If n is greater than the current string capacity, the function causes the container to increase its capacity to n characters 
       In all other cases, it is taken as a non-binding request to shrink the string capacity:
       the container implementation is free to optimize otherwise and leave the string with a capacity greater than n.
     */
-    void Reserve (size_t n = 0);
+    void reserve (size_t n = 0);
 
     /* Returns a pointer on a c-string. It is a getter on string variable*/
     char * c_str(void) const;
 
     /*Calculation of the size of the c-string*/
-    unsigned int SizeCalculation(void);
+    unsigned int sizeCalculation(void);
 
     /*Returns the size of string*/
-    unsigned int Size(void) const;
+    unsigned int size(void) const;
+
+ 
 
     /* Erase string contents and affects 0 to size*/
     void clear(void);
@@ -127,9 +131,9 @@ class String
 
 
     static unsigned int MAX_SIZE;
-    unsigned int capacity;
-    char * string;
-    unsigned int size;
+    unsigned int Capacity;
+    char * Data;
+    unsigned int Size;
        
 };
 
@@ -137,14 +141,14 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-inline unsigned int String::GetSize(void) const
+inline unsigned int String::getSize(void) const
 {
-    return size;
+    return Size;
 }
 
-inline char * String::GetString(void) const
+inline char * String::getString(void) const
 {
-    return string;
+    return Data;
 }
 // ===========================================================================
 //                              Setters' definitions
