@@ -46,6 +46,9 @@ int main(int argc, char* argv[])
   printf("Hello World !\n");
   String * test = new String();
 
+  char mot[8] ="Bonjour";
+  String* test_cstring = new String(mot);
+
   return 0;
 }
 
