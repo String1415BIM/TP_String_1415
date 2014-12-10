@@ -6,8 +6,8 @@
 
 
 
-#ifndef __TEMPLATE_CLASS_H__
-#define __TEMPLATE_CLASS_H__
+#ifndef __STRING_H__
+#define __STRING_H__
 
 
 // ===========================================================================
@@ -120,5 +120,5 @@ class Template_class
 // ===========================================================================
 
 
-#endif // __TEMPLATE_CLASS_H__
+#endif // __SRING_H__
 
