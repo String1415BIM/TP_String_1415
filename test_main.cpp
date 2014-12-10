@@ -12,6 +12,7 @@
 // ===========================================================================
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "String.h"
 
 
@@ -46,8 +47,11 @@ int main(int argc, char* argv[])
   printf("Hello World !\n");
   String * test = new String();
 
+
+  //test du c-string constructor
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
+
 
   return 0;
 }
