@@ -77,7 +77,7 @@ class String
     // =======================================================================
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
-    int Capacity (void) const;
+    size_t Capacity (void) const;
 
     /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
      */
@@ -98,6 +98,7 @@ class String
 
     /*Returns the size of string*/
     unsigned int Size(void) const;
+
     // =======================================================================
     //                             Public Attributes
     // =======================================================================

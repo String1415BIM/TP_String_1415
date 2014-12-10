@@ -48,6 +48,7 @@ int main(int argc, char* argv[])
 
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
+  printf("size=%d, word= %s\n", test_cstring->GetSize(), test_cstring->GetString());
 
   //Test for the copy constructor
   String model=String();
@@ -57,8 +58,9 @@ int main(int argc, char* argv[])
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->Size());
 
+  printf("%d \n",test_cstring->Capacity());
   test_cstring->Reserve(10);
-
+  printf("%d \n",test_cstring->Capacity());
   return 0;
 }
 
