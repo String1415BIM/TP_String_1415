@@ -91,6 +91,15 @@ char * String::c_str(void) const
     return string;
 }
 
+
+bool String :: Empty (void) const
+{
+  bool ret = 0;
+  if (size==0){
+    ret = 1;
+  }
+  return ret;
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================

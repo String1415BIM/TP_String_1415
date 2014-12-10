@@ -50,9 +50,16 @@ int main(int argc, char* argv[])
   String* test_cstring = new String(mot);
   printf("size=%d, word= %s\n", test_cstring->GetSize(), test_cstring->GetString());
 
-  printf("%d \n",test_cstring->Capacity());
+  printf("capacite 1 : %d \n",test_cstring->Capacity());
   test_cstring->Reserve(10);
-  printf("%d \n",test_cstring->Capacity());
+  printf("capacite 2 : %d \n",test_cstring->Capacity());
+
+  test_cstring->Reserve();
+  printf("size : %d \n", test_cstring->GetSize());
+  printf("booleen : %d \n",test_cstring->Empty());
+
+
+
   return 0;
 }
 
