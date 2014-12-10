@@ -81,6 +81,16 @@ class String
      */
     bool Empty (void) const;
 
+
+    /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
+      If n is greater than the current string capacity, the function causes the container to increase its capacity to n characters 
+      In all other cases, it is taken as a non-binding request to shrink the string capacity:
+      the container implementation is free to optimize otherwise and leave the string with a capacity greater than n.
+    */
+    void reserve (size_t n = 0);
+
+
+
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
