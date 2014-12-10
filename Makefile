@@ -1,12 +1,16 @@
 all: test.out
 
-test.out: test_main.cpp String.o
-	g++ -o test.out test_main.cpp String.o -Wall
+test.out: test_main.o String.o
+	g++ -o test_main.o test_main.o String.o -o test.out
 
-String.o: String.cpp String.h
-	g++ -o String.o -c String.cpp -Wall
+test_main.o: test_main.cpp
+	g++ -c test_main.cpp -o test_main.o
+
+String.o: String.h String.cpp
+	g++ -c String.cpp -o String.o
 
 clean:
 	rm *.o
 
-	
+mrproper: clean
+	rm test.out
