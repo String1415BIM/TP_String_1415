@@ -17,6 +17,7 @@
 //                                 Project Files
 // ===========================================================================
 #include "String.h"
+#include <string.h>
 
 
 
@@ -45,11 +46,14 @@ String::String(void)
 
 
 //Constructor from a c-string
-String::String(char * stringToAppend)
+String::String(const char * s)
 {
-  Data = stringToAppend;
-  Size =sizeCalculation();
+
+  Data = new char [Capacity];
+  memcpy(String,s,Capacity*sizeof(*Data));	
+  Size =SizeCalculation();
   Capacity= 0;
+
 }
 
 //Copy constructor
@@ -84,6 +88,7 @@ void String :: reserve (size_t n)
   }
 }
 
+
 char * String::c_str(void) const
 {
     return Data;
@@ -114,6 +119,7 @@ unsigned int String::size(void) const
 {
 	return (Size-1);
 }
+
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================

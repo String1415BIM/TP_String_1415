@@ -15,6 +15,7 @@
 // ===========================================================================
 #include <cstdio>
 #include <cstdlib>
+#include <string.h>
 
 
 
@@ -50,10 +51,11 @@ class String
     String(void);
 
     //c-string constructor
-    String(char * stringToAppend);
+    String(const char * s);
     
     //copy consructor
     String(const String& str);
+
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -98,6 +100,8 @@ class String
 
     /*Returns the size of string*/
     unsigned int size(void) const;
+
+ 
 
     // =======================================================================
     //                             Public Attributes
