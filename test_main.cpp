@@ -57,6 +57,8 @@ int main(int argc, char* argv[])
   printf("%s\n",test_cstring->c_str()); 
 
 
+  test_cstring->Reserve(10);
+
   return 0;
 }
 
