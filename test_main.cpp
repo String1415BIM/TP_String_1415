@@ -48,6 +48,7 @@ int main(int argc, char* argv[])
 
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
+  printf("size=%d\n", test_cstring->GetSize());
 
   return 0;
 }
