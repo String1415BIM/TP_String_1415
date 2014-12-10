@@ -69,7 +69,7 @@ String::String(const String& str)
 // ===========================================================================
 String::~String(void)
 {
-  delete Data;
+  delete [] Data;
   Data = NULL;
 }
 
