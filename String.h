@@ -82,7 +82,9 @@ class String
     /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
      */
     bool Empty (void) const;
-
+    
+    /* Returns a pointer on a c-string. It is a getter on string variable*/
+    char * c_str(void);
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
