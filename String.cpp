@@ -34,12 +34,24 @@
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
+
+//Default constructor
 String::String(void)
 {
   string = NULL;
   size = 0;	
   capacity= 0;	
 }
+
+
+//Constructor from a c-string
+String::String(char * stringToAppend)
+{
+  string = stringToAppend;
+  size = 0;	
+  capacity= 0;
+}
+
 
 // ===========================================================================
 //                                  Destructor
