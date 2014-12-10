@@ -37,7 +37,7 @@
 
 class String
 {
-  public :
+  public:
     
     // =======================================================================
     //                                 Enums
@@ -52,6 +52,9 @@ class String
 
     //c-string constructor
     String(const char * s);
+    
+    //copy consructor
+    String(const String& str);
 
     // =======================================================================
     //                                Destructor
@@ -61,7 +64,8 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-
+    inline unsigned int GetSize(void) const;
+    inline char * GetString(void) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -73,6 +77,29 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
+    /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
+     */
+    size_t Capacity (void) const;
+
+    /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
+     */
+    bool Empty (void) const;
+
+    /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
+      If n is greater than the current string capacity, the function causes the container to increase its capacity to n characters 
+      In all other cases, it is taken as a non-binding request to shrink the string capacity:
+      the container implementation is free to optimize otherwise and leave the string with a capacity greater than n.
+    */
+    void Reserve (size_t n = 0);
+
+    /* Returns a pointer on a c-string. It is a getter on string variable*/
+    char * c_str(void) const;
+
+    /*Calculation of the size of the c-string*/
+    unsigned int SizeCalculation(void);
+
+    /*Returns the size of string*/
+    unsigned int Size(void) const;
 
  
 
@@ -84,7 +111,7 @@ class String
 
 
 
-  protected :
+  protected:
 
     // =======================================================================
     //                            Forbidden Constructors
@@ -112,7 +139,15 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
+inline unsigned int String::GetSize(void) const
+{
+    return size;
+}
 
+inline char * String::GetString(void) const
+{
+    return string;
+}
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================

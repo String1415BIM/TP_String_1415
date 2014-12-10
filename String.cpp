@@ -23,9 +23,9 @@
 
 
 //############################################################################
-//                                                                           #
-//                           Class Template_class                            #
-//                                                                           #
+//                                                                          
+//                           Class String                           
+//                                                                           
 //############################################################################
 
 // ===========================================================================
@@ -49,11 +49,18 @@ String::String(void)
 String::String(const char * s)
 {
   string = new char [capacity];
-  memcpy(string,s,capacity*sizeof(*string));
-  size = 0;	
+  memcpy(string,s,capacity*sizeof(*string));	
+  size =SizeCalculation();
   capacity= 0;
 }
 
+//Copy constructor
+String::String(const String& str)
+{
+  string=str.string;
+  size=str.size;
+  capacity=str.capacity;
+}
 
 // ===========================================================================
 //                                  Destructor
@@ -67,8 +74,38 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+size_t String:: Capacity (void) const
+{
+  return capacity*sizeof(char);
+}
+
+void String :: Reserve (size_t n)
+{
+  if(capacity<n) {
+    capacity=n;
+  }
+}
 
 
+char * String::c_str(void) const
+{
+    return string;
+}
+
+unsigned int String::SizeCalculation(void)
+{
+	unsigned int i=0;
+	while(string[i]!='\0')
+    {
+      i++; 
+    }
+    return (i+1);
+}
+
+unsigned int String::Size(void) const
+{
+	return (size-1);
+}
 
 // ===========================================================================
 //                                Protected Methods
