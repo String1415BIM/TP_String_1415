@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "String.h"
-
+#include <stdbool.h>
 
 // ===========================================================================
 //                               Static Attributes
