@@ -6,8 +6,8 @@
 
 
 
-#ifndef __STRING_CLASS_H__
-#define __STRING_CLASS_H__
+#ifndef __TEMPLATE_CLASS_H__
+#define __TEMPLATE_CLASS_H__
 
 
 // ===========================================================================
@@ -31,10 +31,12 @@
 
 
 
-class String
-{
 
-  public:
+
+
+class Template_class
+{
+  public :
     
     // =======================================================================
     //                                 Enums
@@ -43,23 +45,17 @@ class String
     // =======================================================================
     //                               Constructors
     // =======================================================================
-    String(void);
-
-    String(char * stringToAppend);
-
-    String(const String& stringToAppend);
-
+    Template_class(void);
 
     // =======================================================================
     //                                Destructor
     // =======================================================================
-    virtual ~String(void);
+    virtual ~Template_class(void);
 
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    unsigned int Get_size(void);
-    char * Get_string(void);
+
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -76,12 +72,11 @@ class String
     //                             Public Attributes
     // =======================================================================
 
-    
 
 
 
-  protected:
 
+  protected :
 
     // =======================================================================
     //                            Forbidden Constructors
@@ -91,11 +86,11 @@ class String
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     };*/
-    /*Template_class(const Template_class &model)
+    Template_class(const Template_class &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };*/
+    };
 
 
     // =======================================================================
@@ -105,15 +100,6 @@ class String
     // =======================================================================
     //                             Protected Attributes
     // =======================================================================
-  private:
-    // =======================================================================
-    //                             Private Attributes
-    // =======================================================================
-    static unsigned int MAX_SIZE;
-    unsigned int capacity;
-    char * string;
-    unsigned int size;
-    
 };
 
 
@@ -134,4 +120,5 @@ class String
 // ===========================================================================
 
 
-#endif // __STRING_CLASS_H__
+#endif // __TEMPLATE_CLASS_H__
+
