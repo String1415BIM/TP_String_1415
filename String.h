@@ -34,7 +34,7 @@
 
 
 
-class Template_class
+class String
 {
   public :
     
@@ -45,12 +45,12 @@ class Template_class
     // =======================================================================
     //                               Constructors
     // =======================================================================
-    Template_class(void);
+    String(void);
 
     // =======================================================================
     //                                Destructor
     // =======================================================================
-    virtual ~Template_class(void);
+    virtual ~String(void);
 
     // =======================================================================
     //                            Accessors: getters
@@ -86,11 +86,11 @@ class Template_class
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
     };*/
-    Template_class(const Template_class &model)
+    /*Template_class(const Template_class &model)
     {
       printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
       exit(EXIT_FAILURE);
-    };
+    };*/
 
 
     // =======================================================================
@@ -100,6 +100,13 @@ class Template_class
     // =======================================================================
     //                             Protected Attributes
     // =======================================================================
+
+
+    static unsigned int MAX_SIZE;
+    unsigned int capacity;
+    char * string;
+    unsigned int size;
+       
 };
 
 
