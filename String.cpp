@@ -40,11 +40,11 @@
 String::String(char * stringToAppend)
 {
   string = stringToAppend;
-  size = NULL;	
-  MAX_SIZE = 100;
-  capacity= NULL;
+  size = 0;	
+  capacity= 100;
 }
 
+//Copy constructor
 String::String(const String& stringToAppend)
 {
   string=stringToAppend.string;
@@ -63,7 +63,15 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+unsigned int String::Get_size(void)
+{
+	return size;
+}
 
+char * String::Get_string(void)
+{
+	return string;
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================
