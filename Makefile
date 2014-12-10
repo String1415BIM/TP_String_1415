@@ -1,7 +1,7 @@
 all: test.out
 
 test.out: test_main.o String.o
-	g++ -o test_main.o test_main.o String.o -o test.out
+	g++ test_main.o String.o -o test.out
 
 test_main.o: test_main.cpp
 	g++ -c test_main.cpp -o test_main.o
