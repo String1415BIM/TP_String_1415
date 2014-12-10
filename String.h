@@ -45,7 +45,7 @@ class String
     // =======================================================================
     String(void);
 
-    String(char * stringToAppend)
+    String(char * stringToAppend);
 
     String(const String& stringToAppend);
 
