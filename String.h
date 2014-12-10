@@ -83,8 +83,6 @@ class String
      */
     bool Empty (void) const;
 
-
-
     /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
       If n is greater than the current string capacity, the function causes the container to increase its capacity to n characters 
       In all other cases, it is taken as a non-binding request to shrink the string capacity:
@@ -92,14 +90,15 @@ class String
     */
     void Reserve (size_t n = 0);
 
-
-
-   
     /* Returns a pointer on a c-string. It is a getter on string variable*/
-
     char * c_str(void) const;
 
-   
+    /*Calculation of the size of the c-string*/
+    unsigned int SizeCalculation(void);
+
+    /*Returns the size of string*/
+    unsigned int Size(void) const;
+
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
