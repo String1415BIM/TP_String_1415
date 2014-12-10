@@ -50,6 +50,8 @@ int main(int argc, char* argv[])
   String* test_cstring = new String(mot);
   printf("size=%d, word= %s\n", test_cstring->GetSize(), test_cstring->GetString());
 
+  test_cstring->Reserve(10);
+
   return 0;
 }
 

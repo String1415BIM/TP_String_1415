@@ -87,7 +87,7 @@ class String
       In all other cases, it is taken as a non-binding request to shrink the string capacity:
       the container implementation is free to optimize otherwise and leave the string with a capacity greater than n.
     */
-    void reserve (size_t n = 0);
+    void Reserve (size_t n = 0);
 
 
 
