@@ -45,7 +45,7 @@ unsigned int String::MAX_SIZE = 100;
 int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
-  String * test = new String();
+  String  test =String();
 
 
   //test du c-string constructor
@@ -54,13 +54,10 @@ int main(int argc, char* argv[])
   printf("size=%d, word= %s\n", test_cstring->getSize(), test_cstring->getString());
 
 
-  
-
   //Test for the copy constructor
   String model=String();
   String test_copy=String(model);
 
-  //Test on c_str & size methods
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->size());
 
@@ -74,6 +71,12 @@ int main(int argc, char* argv[])
   printf("size : %d \n", test_cstring->size());
   printf("booleen : %d \n",test_cstring->empty());
 
+  //Test on clear method
+  char word[]="Link list";
+  String testo=String(word);
+  printf("%s, size=%d\n", testo.c_str(), testo.Size());
+  testo.clear();
+  printf("%s, size=%d\n", testo.c_str(), testo.Size());
 
   return 0;
 

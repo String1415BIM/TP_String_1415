@@ -48,7 +48,6 @@ String::String(void)
 //Constructor from a c-string
 String::String(const char * s)
 {
-
   Data = new char [Capacity];
   memcpy(Data,s,Capacity*sizeof(*Data));	
   Size =sizeCalculation();
@@ -118,6 +117,12 @@ unsigned int String::sizeCalculation(void)
 unsigned int String::size(void) const
 {
 	return (Size-1);
+}
+
+void String::clear(void)
+{
+  string[0]='\0';
+  size=1;
 }
 
 // ===========================================================================
