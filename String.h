@@ -45,7 +45,7 @@ class String
     // =======================================================================
     String(void);
 
-    String(char * stringToAppend)
+    String(char * stringToAppend);
 
     String(const String& stringToAppend);
 
@@ -75,7 +75,7 @@ class String
     //                             Public Attributes
     // =======================================================================
 
-
+    
 
 
 
@@ -112,6 +112,7 @@ class String
     unsigned int capacity;
     char * string;
     unsigned int size;
+    
 };
 
 
