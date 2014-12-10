@@ -48,7 +48,7 @@ String::String(void)
 String::String(char * stringToAppend)
 {
   string = stringToAppend;
-  size = 0;	
+  size =SizeCalculation();
   capacity= 0;
 }
 
@@ -72,11 +72,6 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
-<<<<<<< HEAD
-char * String::c_str(void) const
-=======
-
-
 void String :: Reserve (size_t n)
 {
   if(capacity<n) {
@@ -85,14 +80,25 @@ void String :: Reserve (size_t n)
   printf("%d \n", capacity);
 
 }
-
-
-char * String::c_str(void)
->>>>>>> b72b1f38d2296873e873d288e7bbef1ff3e0694b
+char * String::c_str(void) const
 {
 	return string;
 }
 
+unsigned int String::SizeCalculation(void)
+{
+	unsigned int i=0;
+	while(string[i]!='\0')
+    {
+      i++; 
+    }
+    return (i+1);
+}
+
+unsigned int String::Size(void) const
+{
+	return (size-1);
+}
 // ===========================================================================
 //                                Protected Methods
 // ===========================================================================

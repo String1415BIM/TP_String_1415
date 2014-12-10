@@ -82,8 +82,6 @@ class String
     /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
      */
     bool Empty (void) const;
-<<<<<<< HEAD
-
 
     /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
       If n is greater than the current string capacity, the function causes the container to increase its capacity to n characters 
@@ -92,20 +90,14 @@ class String
     */
     void Reserve (size_t n = 0);
 
-
-
-=======
-    
     /* Returns a pointer on a c-string. It is a getter on string variable*/
-<<<<<<< HEAD
     char * c_str(void) const;
 
-    /*Returns the size of the c-string*/
-    //unsigned int size(void);
-=======
-    char * c_str(void);
->>>>>>> 660492b098e22d70de75a720291b92ed983add9a
->>>>>>> b72b1f38d2296873e873d288e7bbef1ff3e0694b
+    /*Calculation of the size of the c-string*/
+    unsigned int SizeCalculation(void);
+
+    /*Returns the size of string*/
+    unsigned int Size(void) const;
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
