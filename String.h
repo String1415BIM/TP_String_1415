@@ -81,16 +81,7 @@ class String
     // =======================================================================
     //                            Forbidden Constructors
     // =======================================================================
-    /*Template_class(void)
-    {
-      printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
-      exit(EXIT_FAILURE);
-    };*/
-    /*Template_class(const Template_class &model)
-    {
-      printf("%s:%d: error: call to forbidden constructor.\n", __FILE__, __LINE__);
-      exit(EXIT_FAILURE);
-    };*/
+
 
 
     // =======================================================================
@@ -127,5 +118,5 @@ class String
 // ===========================================================================
 
 
-#endif // __SRING_H__
+#endif // __STRING_H__
 
