@@ -47,9 +47,10 @@ String::String(void)
 //Constructor from a c-string
 String::String(char * stringToAppend)
 {
-  string = stringToAppend;
-  size =SizeCalculation();
-  capacity= 0;
+  Data = new char [Capacity];
+  memcpy(String,s,Capacity*sizeof(*Data));
+  Size =SizeCalculation();
+ Capacity= 0;
 }
 
 //Copy constructor
@@ -102,6 +103,12 @@ unsigned int String::SizeCalculation(void)
 unsigned int String::Size(void) const
 {
 	return (size-1);
+}
+
+void String::clear(void)
+{
+  string[0]='\0';
+  size=1;
 }
 // ===========================================================================
 //                                Protected Methods

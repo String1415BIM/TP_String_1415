@@ -99,6 +99,8 @@ class String
     /*Returns the size of string*/
     unsigned int Size(void) const;
 
+    /* Erase string contents and affects 0 to size*/
+    void clear(void);
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
