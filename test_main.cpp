@@ -53,6 +53,9 @@ int main(int argc, char* argv[])
   String model=String();
   String test_copy=String(model);
 
+  //Test on c_str method
+  printf("%s\n",test_cstring->c_str()); 
+
 
   return 0;
 }
