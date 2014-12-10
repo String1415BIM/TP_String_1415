@@ -51,7 +51,9 @@ class String
 
     //c-string constructor
     String(char * stringToAppend);
-
+    
+    //copy consructor
+    String(const String& str);
     // =======================================================================
     //                                Destructor
     // =======================================================================

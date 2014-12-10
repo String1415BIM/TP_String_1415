@@ -52,6 +52,13 @@ String::String(char * stringToAppend)
   capacity= 0;
 }
 
+//Copy constructor
+String::String(const String& str)
+{
+  string=str.string;
+  size=str.size;
+  capacity=str.capacity;
+}
 
 // ===========================================================================
 //                                  Destructor
