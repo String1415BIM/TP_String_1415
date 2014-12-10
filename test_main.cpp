@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include "String.h"
 
-
+unsigned int String::MAX_SIZE = 100;
 
 // ===========================================================================
 //                             Include Project Files
@@ -39,6 +39,9 @@
 int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
+  char mot[8] ="Bonjour";
+  String* test = new String(mot);
+
 
   return 0;
 }
