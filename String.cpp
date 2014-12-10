@@ -22,9 +22,9 @@
 
 
 //############################################################################
-//                                                                           #
-//                           Class Template_class                            #
-//                                                                           #
+//                                                                          
+//                           Class String                           
+//                                                                           
 //############################################################################
 
 // ===========================================================================
@@ -52,6 +52,13 @@ String::String(char * stringToAppend)
   capacity= 0;
 }
 
+//Copy constructor
+String::String(const String& str)
+{
+  string=str.string;
+  size=str.size;
+  capacity=str.capacity;
+}
 
 // ===========================================================================
 //                                  Destructor
@@ -66,6 +73,7 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 
+
 void String :: Reserve (size_t n)
 {
   if(capacity<n) {
@@ -73,6 +81,12 @@ void String :: Reserve (size_t n)
   }
   printf("%d \n", capacity);
 
+}
+
+
+char * String::c_str(void)
+{
+	return string;
 }
 
 // ===========================================================================

@@ -51,7 +51,9 @@ class String
 
     //c-string constructor
     String(char * stringToAppend);
-
+    
+    //copy consructor
+    String(const String& str);
     // =======================================================================
     //                                Destructor
     // =======================================================================
@@ -80,6 +82,7 @@ class String
     /* Returns whether the string is empty (i.e. whether its length is 0). True means empty
      */
     bool Empty (void) const;
+<<<<<<< HEAD
 
 
     /*Requests that the string capacity be adapted to a planned change in size to a length of up to n characters.
@@ -91,6 +94,11 @@ class String
 
 
 
+=======
+    
+    /* Returns a pointer on a c-string. It is a getter on string variable*/
+    char * c_str(void);
+>>>>>>> 660492b098e22d70de75a720291b92ed983add9a
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
