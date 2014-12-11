@@ -51,13 +51,13 @@ int main(int argc, char* argv[])
   //test c-string constructor
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
-  int i;
-  printf("size=%d, word= %s\n", test_cstring->getSize(), test_cstring->c_str());
+  printf("size=%d, word= %s\n", test_cstring->size(), test_cstring->c_str());
 
 
   //Test for the copy constructor
-  String model=String();
+  String model=String(mot);
   String test_copy=String(model);
+  printf("size=%d, word= %s\n", test_copy.size(), test_copy.c_str());
 
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->size());
@@ -90,14 +90,14 @@ int main(int argc, char* argv[])
   printf("size : %d \n", test_cstring->size());
   printf("booleen : %d \n",test_cstring->empty());
 
-  /* //Test on clear method
+  //Test on clear method
   char word[]="Link list";
-  String testo=String(word);
-  printf("%s, size=%d\n", testo.c_str(), testo.Size());
-  testo.clear();
-  printf("%s, size=%d\n", testo.c_str(), testo.Size());
-  */
-  return 0;
+  String* testo=new String(word);
+  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  testo->clear();
+  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  
+    return 0;
 
 }
 
