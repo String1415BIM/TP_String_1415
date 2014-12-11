@@ -48,12 +48,16 @@ String::String(void)
 //Constructor from a c-string
 String::String(const char * s)
 {
-
-  Data = new char [Capacity];
+  int Size_temp = 0;
+  while( s[Size_temp] != '\0')
+  {
+    Size_temp ++;
+  }
+  Size= Size_temp +1;
+  Capacity= Size;
+  Data = new char [Size];
   memcpy(Data,s,Capacity*sizeof(*Data));	
-  Size =sizeCalculation();
-  Capacity= 0;
-
+  
 }
 
 //Copy constructor
