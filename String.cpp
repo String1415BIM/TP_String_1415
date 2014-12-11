@@ -121,8 +121,8 @@ unsigned int String::size(void) const
 
 void String::clear(void)
 {
-  string[0]='\0';
-  size=1;
+  Data[0]='\0';
+  Size=1;
 }
 
 // ===========================================================================

@@ -71,13 +71,13 @@ int main(int argc, char* argv[])
   printf("size : %d \n", test_cstring->size());
   printf("booleen : %d \n",test_cstring->empty());
 
-  //Test on clear method
+  /* //Test on clear method
   char word[]="Link list";
   String testo=String(word);
   printf("%s, size=%d\n", testo.c_str(), testo.Size());
   testo.clear();
   printf("%s, size=%d\n", testo.c_str(), testo.Size());
-
+  */
   return 0;
 
 }
