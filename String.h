@@ -81,6 +81,13 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
+    
+    
+    /* Returns the maximum length the string can reach.
+    */
+    size_t max_size(void) const;
+
+
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
     size_t capacity (void) const;
