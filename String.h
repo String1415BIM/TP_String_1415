@@ -83,8 +83,13 @@ class String
     friend inline String operator+ (const char* lhs, const String& rhs);
 
     /* Assigns a new value to a string, from a c-string*/
+
     friend inline String& operator=(const String& str);
    //String& operator=( const String& other );
+
+    inline String& operator=(const String& str);
+//String& operator=( const String& other );
+
 
 
     /* */
@@ -181,11 +186,7 @@ inline char * String::getString(void) const
 //                             Operators' definitions
 // ===========================================================================
 
-/*inline String operator+ (const String& lhs, char rhs)
-=======
-
-
-inline string operator+ (const string& lhs, char rhs)
+/*inline string operator+ (const string& lhs, char rhs)
 {
   int NewSize = lhs.size()+1;
   String ret = lhs;
@@ -194,9 +195,6 @@ inline string operator+ (const string& lhs, char rhs)
   return ret;
 }
 
-
-
-inline String operator+ (char lhs, const String& rhs)
 inline String operator+ (char lhs, const string& rhs)
 
 {
@@ -205,8 +203,8 @@ inline String operator+ (char lhs, const string& rhs)
   ret.resize(NewSize);
   ret.Data[NewSize]= rhs;
   return ret;
-
   }*/
+
 /*inline String operator+ (const String& lhs, const String& rhs)
 {
   int NewSize = lhs.size() + rhs.size();
