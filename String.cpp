@@ -57,7 +57,6 @@ String::String(const char * s)
   Capacity= Size;
   Data = new char [Size];
   memcpy(Data,s,Capacity*sizeof(*Data));	
-  
 }
 
 //Copy constructor
