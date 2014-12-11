@@ -82,13 +82,13 @@ String::~String(void)
 // ===========================================================================
 size_t String:: capacity (void) const
 {
-  return Capacity*sizeof(char);
+  return (Capacity-1)*sizeof(char);
 }
 
 void String :: reserve (size_t n)
 {
   if(Capacity<n) {
-    Capacity=n;
+    Capacity=n+1;
   }
 }
 
