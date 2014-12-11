@@ -80,6 +80,8 @@ class String
     friend inline String operator+ (const String& lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (char lhs, const String& rhs);
+
+    /* Returns a new object string which contains rhs and lhs at the end*/
     friend inline String operator+ (const char* lhs, const String& rhs);
 
     /* Assigns a new value to a string, from a c-string*/
@@ -89,12 +91,10 @@ class String
   //String& operator=( const String& other );
 
     inline String& operator=(const String& str);
-  //String& operator=( const String& other );
 
 
+    //String& operator=( const String& other );
 
-    /* */
-    
 
     // =======================================================================
     //                              Public Methods
