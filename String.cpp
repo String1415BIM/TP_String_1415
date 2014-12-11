@@ -48,8 +48,10 @@ String::String(void)
 //Constructor from a c-string
 String::String(const char * s)
 {
-  Data = new char [Capacity];
-  memcpy(Data,s,Capacity*sizeof(*Data));	
+  Data = new char[Capacity];
+  printf("%d\n", capacity);
+  memcpy(Data,s,sizeof(*Data));
+  printf("Data=%s\n", Data);
   Size =sizeCalculation();
   Capacity= 0;
 

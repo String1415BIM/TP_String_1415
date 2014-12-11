@@ -51,7 +51,7 @@ int main(int argc, char* argv[])
   //test du c-string constructor
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
-  printf("size=%d, word= %s\n", test_cstring->getSize(), test_cstring->getString());
+  printf("size=%d, word= %s\n", test_cstring->size(), test_cstring->getString());
 
 
   //Test for the copy constructor
@@ -71,14 +71,14 @@ int main(int argc, char* argv[])
   printf("size : %d \n", test_cstring->size());
   printf("booleen : %d \n",test_cstring->empty());
 
-  /* //Test on clear method
+  //Test on clear method
   char word[]="Link list";
-  String testo=String(word);
-  printf("%s, size=%d\n", testo.c_str(), testo.Size());
-  testo.clear();
-  printf("%s, size=%d\n", testo.c_str(), testo.Size());
-  */
-  return 0;
+  String* testo=new String(word);
+  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  testo->clear();
+  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  
+    return 0;
 
 }
 
