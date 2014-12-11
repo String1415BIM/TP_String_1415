@@ -161,7 +161,7 @@ inline char * String::getString(void) const
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
-inline string operator+ (const string& lhs, char rhs)
+/*inline string operator+ (const string& lhs, char rhs)
 {
   int NewSize = lhs.size()+1;
   String ret = lhs;
@@ -178,7 +178,7 @@ inline string operator+ (char lhs, const string& rhs)
   ret.resize(NewSize);
   ret.Data[NewSize]= rhs;
   return ret;
-}
+  }*/
 // ===========================================================================
 //                          Inline functions' definition
 // ===========================================================================
