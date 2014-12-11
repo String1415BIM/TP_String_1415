@@ -45,7 +45,7 @@ unsigned int String::MAX_SIZE = 100;
 int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
-  String  test =String();
+  String *  test =new String();
 
 
   //test c-string constructor
@@ -61,6 +61,11 @@ int main(int argc, char* argv[])
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->size());
 
+
+
+
+  //test MAX_SIZE
+  printf("max_size=%d \n",test->max_size());
 
   //Test on reserve, capacity, empty methods
   printf("capacite 1 : %d \n",test_cstring->capacity());

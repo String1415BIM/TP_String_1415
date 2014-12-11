@@ -89,6 +89,13 @@ class String
     // =======================================================================
     //                              Public Methods
     // =======================================================================
+    
+    
+    /* Returns the maximum length the string can reach.
+    */
+    size_t max_size(void) const;
+
+
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
     size_t capacity (void) const;
@@ -169,7 +176,9 @@ inline char * String::getString(void) const
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
-/*inline String operator+ (const string& lhs, char rhs)
+
+
+inline string operator+ (const string& lhs, char rhs)
 {
   int NewSize = lhs.size()+1;
   String ret = lhs;
@@ -186,7 +195,8 @@ inline String operator+ (char lhs, const string& rhs)
   ret.resize(NewSize);
   ret.Data[NewSize]= rhs;
   return ret;
-}*/
+}
+
 // ===========================================================================
 //                          Inline functions' definition
 // ===========================================================================
