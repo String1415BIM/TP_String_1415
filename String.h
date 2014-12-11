@@ -76,8 +76,9 @@ class String
    
     /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
      */
-    inline string operator+ (const string& lhs, char rhs);
-    inline string operator+ (char lhs, const string& rhs);
+    inline String operator+ (const String& lhs, char rhs);
+    inline String operator+ (char lhs, const String& rhs);
+    inline String operator+ (const String& lhs, const String& rhs);
     // =======================================================================
     //                              Public Methods
     // =======================================================================
@@ -184,6 +185,18 @@ inline String operator+ (char lhs, const String& rhs)
   String ret = lhs;
   ret.resize(NewSize);
   ret.Data[NewSize]= rhs;
+  return ret;
+  }*/
+/*inline String operator+ (const String& lhs, const String& rhs)
+{
+  int NewSize = lhs.size() + rhs.size();
+  String ret = lhs;
+  char* tmp = new [rhs.size()*sizeof(char)];
+  tmp= rhs.Data;
+  ret.resize(NewSize);
+  for(int i = lhs.size() ; i<Newsize; i++) {
+    ret.Data[i]=tmp[i];
+  }
   return ret;
   }*/
 // ===========================================================================
