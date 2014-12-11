@@ -76,8 +76,8 @@ class String
    
     /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
      */
-    inline string operator+ (const string& lhs, char rhs);
-    inline string operator+ (char lhs, const string& rhs);
+    /*inline string operator+ (const string& lhs, char rhs);
+    inline string operator+ (char lhs, const string& rhs);*/
     // =======================================================================
     //                              Public Methods
     // =======================================================================
@@ -86,6 +86,12 @@ class String
     /* Returns the maximum length the string can reach.
     */
     size_t max_size(void) const;
+
+
+    /*Resizes the string to a length of n characters.
+    */
+    void resize (size_t n);
+    void resize (size_t n, char c);
 
 
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
