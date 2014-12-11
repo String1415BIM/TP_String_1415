@@ -80,6 +80,67 @@ String::~String(void)
 // ===========================================================================
 //                                 Public Methods
 // ===========================================================================
+
+
+
+size_t String::String::max_size(void) const
+{
+  return MAX_SIZE;
+}
+
+
+void String::resize (size_t n)
+{
+  if (Size > n)
+  {
+    int i; 
+    for (i=n;i<Size;i++)
+    {
+      Data[i] ='\0';
+    }
+    Size = n+1;
+  }
+
+  if (Size < n)
+  {
+    reserve(n+5);
+    int i;
+    for (i= Size-1; i<n; i++)
+    {
+      Data[i] = '\0';
+    }
+    Size = n+1;
+  }
+
+}
+
+
+void String::String::resize (size_t n, char c)
+{
+  if (Size > n)
+  {
+    int i; 
+    for (i=n;i<Size;i++)
+    {
+      Data[i] ='\0';
+    }
+    Size = n+1;
+  }
+
+  if (Size < n)
+  {
+    reserve(n+5);
+    int i;
+    for (i= Size-1; i<n; i++)
+    {
+      Data[i] = c;
+    }
+    Size = n+1;  
+  }
+}
+
+
+
 size_t String:: capacity (void) const
 {
   return (Capacity-1)*sizeof(char);
@@ -87,7 +148,8 @@ size_t String:: capacity (void) const
 
 void String :: reserve (size_t n)
 {
-  if(Capacity<n) {
+  if(Capacity<n) 
+  {
     Capacity=n+1;
   }
 }
@@ -131,10 +193,6 @@ void String::clear(void)
 }
 
 
-size_t String::String::max_size(void) const
-{
-  return MAX_SIZE;
-}
 
 // ===========================================================================
 //                                Protected Methods
