@@ -76,16 +76,23 @@ class String
    
     /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
      */
+
+    friend inline String operator+ (const String& lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (char lhs, const String& rhs);
 
-    /* Assigns a new value to a string, from a c-string*/
-    inline String& operator=(const String& str);
-//String& operator=( const String& other );
-
-
     /* Returns a new object string which contains rhs and lhs at the end*/
     friend inline String operator+ (const char* lhs, const String& rhs);
+
+    /* Assigns a new value to a string, from a c-string*/
+
+    friend inline String& operator=(const String& str);
+   //String& operator=( const String& other );
+
+    inline String& operator=(const String& str);
+    //String& operator=( const String& other );
+
+
     // =======================================================================
     //                              Public Methods
     // =======================================================================
@@ -177,7 +184,6 @@ inline char * String::getString(void) const
 //                             Operators' definitions
 // ===========================================================================
 
-
 /*inline string operator+ (const string& lhs, char rhs)
 {
   int NewSize = lhs.size()+1;
@@ -187,15 +193,30 @@ inline char * String::getString(void) const
   return ret;
 }
 
-
 inline String operator+ (char lhs, const string& rhs)
+
 {
   int NewSize = rhs.size()+1;
   String ret = lhs;
   ret.resize(NewSize);
   ret.Data[NewSize]= rhs;
   return ret;
-}*/
+  }*/
+
+/*inline String operator+ (const String& lhs, const String& rhs)
+{
+  int NewSize = lhs.size() + rhs.size();
+  String ret = lhs;
+  char* tmp = new [rhs.size()*sizeof(char)];
+  tmp= rhs.Data;
+  ret.resize(NewSize);
+  for(int i = lhs.size() ; i<Newsize; i++) {
+    ret.Data[i]=tmp[i];
+  }
+  return ret;
+  }*/
+
+}
 
 // ===========================================================================
 //                          Inline functions' definition
