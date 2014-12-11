@@ -55,8 +55,9 @@ int main(int argc, char* argv[])
 
 
   //Test for the copy constructor
-  String model=String();
+  String model=String(mot);
   String test_copy=String(model);
+  printf("size=%d, word= %s\n", test_copy.size(), test_copy.c_str());
 
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->size());
