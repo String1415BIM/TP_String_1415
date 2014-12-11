@@ -84,11 +84,12 @@ class String
 
     /* Assigns a new value to a string, from a c-string*/
 
-    friend inline String& operator=(const String& str);
-   //String& operator=( const String& other );
+    //friend inline String& operator=(const String& str);
+   
+  //String& operator=( const String& other );
 
     inline String& operator=(const String& str);
-//String& operator=( const String& other );
+  //String& operator=( const String& other );
 
 
 
@@ -205,20 +206,21 @@ inline String operator+ (char lhs, const string& rhs)
   return ret;
   }*/
 
-/*inline String operator+ (const String& lhs, const String& rhs)
+inline String operator+ (const String& lhs, const String& rhs)
 {
-  int NewSize = lhs.size() + rhs.size();
+  int sum = lhs.size() + rhs.size();
   String ret = lhs;
-  char* tmp = new [rhs.size()*sizeof(char)];
+  int rsz =rhs.size();
+  char* tmp = new char [rsz];
   tmp= rhs.Data;
-  ret.resize(NewSize);
-  for(int i = lhs.size() ; i<Newsize; i++) {
+  // ret.resize(sum);
+  for(int i = lhs.size() ; i<sum; i++) {
     ret.Data[i]=tmp[i];
   }
   return ret;
-  }*/
-
 }
+
+
 
 // ===========================================================================
 //                          Inline functions' definition
