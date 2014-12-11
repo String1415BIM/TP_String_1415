@@ -73,7 +73,7 @@ String::String(const String& str)
 // ===========================================================================
 String::~String(void)
 {
-  delete Data;
+  delete [] Data;
   Data = NULL;
 }
 
@@ -122,6 +122,12 @@ unsigned int String::sizeCalculation(void)
 unsigned int String::size(void) const
 {
 	return (Size-1);
+}
+
+void String::clear(void)
+{
+  Data[0]='\0';
+  Size=1;
 }
 
 // ===========================================================================
