@@ -68,6 +68,19 @@ int main(int argc, char* argv[])
   //test MAX_SIZE
   printf("max_size=%d \n",test->max_size());
 
+  
+  //test resize
+  test_cstring->resize (10);
+  printf("resize: %s \n",test_cstring->c_str());
+  
+  test_cstring->resize (5, 'a');
+  printf("resize: %s \n",test_cstring->c_str());
+
+  test_cstring->resize (10, 'a');
+  printf("resize: %s \n",test_cstring->c_str());
+
+
+
   //Test on reserve, capacity, empty methods
   printf("capacite 1 : %d \n",test_cstring->capacity());
   test_cstring->reserve(10);
