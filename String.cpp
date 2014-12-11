@@ -62,9 +62,10 @@ String::String(const char * s)
 //Copy constructor
 String::String(const String& str)
 {
-  Data=str.Data;
+  Data= new char [str.Size];
   Size=str.Size;
   Capacity=str.Capacity;
+  memcpy(Data,str.Data,Capacity*sizeof(*Data));
 }
 
 // ===========================================================================

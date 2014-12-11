@@ -84,7 +84,7 @@ class String
 //String& operator=( const String& other );
 
 
-    /* */
+    /* Returns a new object string which contains rhs and lhs at the end*/
     friend inline String operator+ (const char* lhs, const String& rhs);
     // =======================================================================
     //                              Public Methods
