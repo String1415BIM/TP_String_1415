@@ -48,13 +48,15 @@ String::String(void)
 //Constructor from a c-string
 String::String(const char * s)
 {
-  Data = new char[Capacity];
-  printf("%d\n", capacity);
-  memcpy(Data,s,sizeof(*Data));
-  printf("Data=%s\n", Data);
-  Size =sizeCalculation();
-  Capacity= 0;
-
+  int Size_temp = 0;
+  while( s[Size_temp] != '\0')
+  {
+    Size_temp ++;
+  }
+  Size= Size_temp +1;
+  Capacity= Size;
+  Data = new char [Size];
+  memcpy(Data,s,Capacity*sizeof(*Data));	
 }
 
 //Copy constructor
@@ -79,13 +81,13 @@ String::~String(void)
 // ===========================================================================
 size_t String:: capacity (void) const
 {
-  return Capacity*sizeof(char);
+  return (Capacity-1)*sizeof(char);
 }
 
 void String :: reserve (size_t n)
 {
   if(Capacity<n) {
-    Capacity=n;
+    Capacity=n+1;
   }
 }
 

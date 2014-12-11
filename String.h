@@ -73,7 +73,11 @@ class String
     // =======================================================================
     //                                Operators
     // =======================================================================
-
+   
+    /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
+     */
+    inline string operator+ (const string& lhs, char rhs);
+    inline string operator+ (char lhs, const string& rhs);
     // =======================================================================
     //                              Public Methods
     // =======================================================================
@@ -157,7 +161,24 @@ inline char * String::getString(void) const
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
+inline string operator+ (const string& lhs, char rhs)
+{
+  int NewSize = lhs.size()+1;
+  String ret = lhs;
+  ret.resize(NewSize);
+  ret.Data[NewSize]= rhs;
+  return ret;
+}
 
+
+inline string operator+ (char lhs, const string& rhs)
+{
+  int NewSize = rhs.size()+1;
+  String ret = lhs;
+  ret.resize(NewSize);
+  ret.Data[NewSize]= rhs;
+  return ret;
+}
 // ===========================================================================
 //                          Inline functions' definition
 // ===========================================================================

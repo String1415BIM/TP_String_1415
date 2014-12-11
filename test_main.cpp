@@ -48,10 +48,10 @@ int main(int argc, char* argv[])
   String  test =String();
 
 
-  //test du c-string constructor
+  //test c-string constructor
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
-  printf("size=%d, word= %s\n", test_cstring->size(), test_cstring->getString());
+  printf("size=%d, word= %s\n", test_cstring->size(), test_cstring->c_str());
 
 
   //Test for the copy constructor
