@@ -101,6 +101,12 @@ class String
     void resize (size_t n, char c);
 
 
+    /*Returns a reference to the character at position pos in the string.
+    */
+    char& at (size_t pos);
+    const char& at (size_t pos) const;
+
+
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
     size_t capacity (void) const;
@@ -124,6 +130,9 @@ class String
 
     /*Returns the size of string*/
     size_t size(void) const;
+    
+    size_t length() const;
+
 
  
 

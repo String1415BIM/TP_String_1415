@@ -17,7 +17,10 @@
 //                                 Project Files
 // ===========================================================================
 #include "String.h"
+#include <cstdio>
+#include <cstdlib>
 #include <string.h>
+#include <stdexcept>
 
 
 
@@ -83,7 +86,7 @@ String::~String(void)
 
 
 
-size_t String::String::max_size(void) const
+size_t String::max_size(void) const
 {
   return MAX_SIZE;
 }
@@ -115,7 +118,7 @@ void String::resize (size_t n) //cas ou Size=n
 }
 
 
-void String::String::resize (size_t n, char c)
+void String::resize (size_t n, char c)
 {
   if (Size > n)
   {
@@ -137,6 +140,46 @@ void String::String::resize (size_t n, char c)
     }
     Size = n+1;  
   }
+}
+
+char& String::at (size_t pos)
+{
+  static char s = '\0';
+  unsigned int i=0;
+  while(Data[i]!='\0')
+  {
+    if (pos == i)
+    {
+      s = Data[i];
+    }
+    i++;
+  }
+  if (pos >= Size)
+  {
+    throw std::out_of_range("Index asked is more than the string length.\n");
+  }
+  return s; 
+}
+
+
+const char& String::at (size_t pos) const
+{
+  static char s = '\0';
+  unsigned int i=0;
+  while(Data[i]!='\0')
+  {
+    if (pos == i)
+    {
+     s = Data[i];
+    }
+    i++;
+  }
+  if (pos >= Size)
+  {
+    //printf("Index value asked is more than the string length.\n");
+    throw std::out_of_range("Index value asked is more than the string length.\n");
+  }
+  return s; 
 }
 
 
@@ -161,8 +204,8 @@ char * String::c_str(void) const
 }
 
 
+bool String::empty (void) const
 
-bool String ::empty (void) const
 {
   bool ret = 0;
   if (Size==0){
@@ -184,6 +227,11 @@ unsigned int String::sizeCalculation(void)
 size_t String::size(void) const
 {
 	return (Size-1);
+}
+
+size_t String::length() const
+{
+  return (Size-1);
 }
 
 void String::clear(void)
