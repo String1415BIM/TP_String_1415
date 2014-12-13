@@ -112,7 +112,6 @@ void String::resize (size_t n)
     {
       Data[i] = '\0';
     }
-    Size = n+1;
   }
 
 }
@@ -139,6 +138,12 @@ void String::resize (size_t n, char c)
       Data[i] = c;
     }
     Size = n+1;  
+  }
+  if (Size == n)
+  {
+    reserve(Size+2);
+    Data[Size-1]=c;
+    Size=Size+1;   
   }
 }
 
@@ -233,6 +238,24 @@ size_t String::length() const
 {
   return (Size-1);
 }
+
+
+/*String& String::operator=(char c)
+{
+  resize(1, char c)
+  String new_string = String();
+    int Size_temp = 0;
+  while( s[Size_temp] != '\0')
+  {
+    Size_temp ++;
+  }
+  Size= 1;
+  Data = new char [Size];
+  memcpy(Data,s,Capacity*sizeof(*Data));
+
+}*/
+
+
 
 void String::clear(void)
 {
