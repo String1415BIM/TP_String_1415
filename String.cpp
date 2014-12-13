@@ -17,7 +17,10 @@
 //                                 Project Files
 // ===========================================================================
 #include "String.h"
+#include <cstdio>
+#include <cstdlib>
 #include <string.h>
+#include <stdexcept>
 
 
 
@@ -40,7 +43,7 @@
 String::String(void)
 {
   Data = NULL;
-  Size = 0;	
+  Size = 1;	//including '\0'
   Capacity= 0;	
 }
 
@@ -83,13 +86,13 @@ String::~String(void)
 
 
 
-size_t String::String::max_size(void) const
+size_t String::max_size(void) const
 {
   return MAX_SIZE;
 }
 
 
-void String::resize (size_t n)
+void String::resize (size_t n) //cas ou Size=n
 {
   if (Size > n)
   {
@@ -115,7 +118,7 @@ void String::resize (size_t n)
 }
 
 
-void String::String::resize (size_t n, char c)
+void String::resize (size_t n, char c)
 {
   if (Size > n)
   {
@@ -139,14 +142,54 @@ void String::String::resize (size_t n, char c)
   }
 }
 
+char& String::at (size_t pos)
+{
+  static char s = '\0';
+  unsigned int i=0;
+  while(Data[i]!='\0')
+  {
+    if (pos == i)
+    {
+      s = Data[i];
+    }
+    i++;
+  }
+  if (pos >= Size)
+  {
+    throw std::out_of_range("Index asked is more than the string length.\n");
+  }
+  return s; 
+}
 
 
-size_t String:: capacity (void) const
+const char& String::at (size_t pos) const
+{
+  static char s = '\0';
+  unsigned int i=0;
+  while(Data[i]!='\0')
+  {
+    if (pos == i)
+    {
+     s = Data[i];
+    }
+    i++;
+  }
+  if (pos >= Size)
+  {
+    //printf("Index value asked is more than the string length.\n");
+    throw std::out_of_range("Index value asked is more than the string length.\n");
+  }
+  return s; 
+}
+
+
+
+size_t String::capacity (void) const
 {
   return (Capacity-1)*sizeof(char);
 }
 
-void String :: reserve (size_t n)
+void String::reserve (size_t n)
 {
   if(Capacity<n) 
   {
@@ -161,8 +204,8 @@ char * String::c_str(void) const
 }
 
 
+bool String::empty (void) const
 
-bool String :: empty (void) const
 {
   bool ret = 0;
   if (Size==0){
@@ -181,9 +224,14 @@ unsigned int String::sizeCalculation(void)
     return (i+1);
 }
 
-unsigned int String::size(void) const
+size_t String::size(void) const
 {
 	return (Size-1);
+}
+
+size_t String::length() const
+{
+  return (Size-1);
 }
 
 void String::clear(void)
@@ -192,7 +240,24 @@ void String::clear(void)
   Size=1;
 }
 
+String operator+ (const String& lhs, char rhs)
+{
+  String ret= String();
+  ret.Size=lhs.size()+1;
+  ret.reserve(ret.Size);
+  //memcpy(ret.Data, lhs.Data, lhs.Size*sizeof(ret.Data));
+  //ret.resize(ret.size()+2, rhs);
+  return ret;
+}
 
+/*String& operator=(const String& str)
+{
+  static String rtn_value=String(str);
+  rtn_value.resize(str.size());
+  rtn_value.Data=str.c_str();
+  printf("%s, %d\n", rtn_value.c_str(), rtn_value.size());
+  return rtn_value;
+} */  
 
 // ===========================================================================
 //                                Protected Methods
