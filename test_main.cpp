@@ -71,6 +71,9 @@ int main(int argc, char* argv[])
   //test resize
   test_cstring->resize (10);
   printf("resize: %s \n",test_cstring->c_str());
+
+  test_cstring->resize (8, 'a');
+  printf("resize: %s \n",test_cstring->c_str());
   
   test_cstring->resize (5, 'a');
   printf("resize: %s \n",test_cstring->c_str());
