@@ -96,7 +96,21 @@ int main(int argc, char* argv[])
   printf("%s, size=%d\n", testo->c_str(), testo->size());
   testo->clear();
   printf("%s, size=%d\n", testo->c_str(), testo->size());
-  
+
+  //Test on operators of Student 1
+  String test_operator1=String("Team Rocket");
+  char letter= 's';
+
+  /*printf("\n\nOperator=\n %s\n", test_operator1.c_str());
+  String test_operator2=String();
+  //test_operator2 = test_operator1;
+  printf("%s, %d\n", test_operator2.c_str(), test_operator2.size());
+  */
+  printf("%s (%d) + %c\n", test_operator1.c_str(), test_operator1.size(), letter);
+  String test_operator2=String();
+  test_operator2= test_operator1 + letter;
+  printf("%s %d, \n",test_operator2.c_str(), test_operator2.size()); /*test_operator2.c_str());*/
+
     return 0;
 
 }
