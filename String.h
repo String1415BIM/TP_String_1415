@@ -83,6 +83,7 @@ class String
     friend inline String operator+ (const char* lhs, const String& rhs);
 
     inline char& operator[] (size_t pos);
+    inline String& operator= (const char* s);
 
     /* Assigns a new value to a string, from a c-string (str)*/
    // String& operator=(const String& str);
@@ -240,15 +241,18 @@ inline char& String::operator[] (size_t pos)
     ret='\0';
     char& def_ref=ret;
     return def_ref;
-  }
-
-  for (tmp=0; tmp<=pos; tmp++) {
-    ret= Data[tmp];
+  } else {
+    ret= Data[pos];
   }
   char& ref=ret;
   return ref;
 }
 
+inline String& String::operator= (const char* s) {
+  String*  ret = new String (s);
+  String& ref_ret= *ret;
+  return ref_ret;
+}
 
 
 // ===========================================================================
