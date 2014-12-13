@@ -220,7 +220,7 @@ inline String operator+ (const String& lhs, const String& rhs)
   int rsz =rhs.size();
   char* tmp = new char [rsz];
   tmp= rhs.Data;
-  // ret.resize(sum);
+  ret.resize(sum);
   for(int i = lhs.size() ; i<sum; i++) {
     ret.Data[i]=tmp[i];
   }

@@ -55,6 +55,7 @@ int main(int argc, char* argv[])
 
 
   //Test for the copy constructor
+  printf("Copy constructor test \n");
   String model=String(mot);
   String test_copy=String(model);
   printf("size=%d, word= %s\n", test_copy.size(), test_copy.c_str());
@@ -66,10 +67,12 @@ int main(int argc, char* argv[])
 
 
   //test MAX_SIZE
+  printf("Max size test \n");
   printf("max_size=%d \n",test->max_size());
 
   
   //test resize
+  printf("Resize test \n");
   test_cstring->resize (10);
   printf("resize: %s \n",test_cstring->c_str());
   
@@ -82,12 +85,19 @@ int main(int argc, char* argv[])
 
 
   //Test on reserve, capacity, empty methods
+  printf("Capacity test \n");
   printf("capacite 1 : %d \n",test_cstring->capacity());
-  test_cstring->reserve(10);
+  
+  printf("Reserve test \n");
+  test_cstring->reserve(20);
   printf("capacite 2 : %d \n",test_cstring->capacity());
-
   test_cstring->reserve();
+  printf("capacite par defaut : %d \n",test_cstring->capacity());
+  
   printf("size : %d \n", test_cstring->size());
+
+
+  printf("Empty test \n");
   printf("booleen : %d \n",test_cstring->empty());
 
   //Test on clear method
