@@ -15,6 +15,7 @@
 #include <string.h>
 #include "String.h"
 #include <stdbool.h>
+#include <iostream>
 
 // ===========================================================================
 //                               Static Attributes
@@ -135,8 +136,17 @@ int main(int argc, char* argv[])
   //Test on operators of Student 3
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
+    
+    // Test of operator +(string)
   String returned_Str = test_op_1 + test_op_2;
   printf("%s \n", returned_Str.c_str() );
+
+    // Test of operator []
+  /*for(int i=0; i<test_op_1.size() +1; i++) {
+    
+  }*/
+  //printf("%c   %c    %c \n", test_op_1.c_str[0], test_op_1.c_str[3], test_op_1.c_str[test_op_1.size()]);
+
 
   return 0;
 

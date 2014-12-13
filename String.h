@@ -82,6 +82,8 @@ class String
     friend  String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
+    inline char& operator[] (size_t pos);
+
     /* Assigns a new value to a string, from a c-string (str)*/
    // String& operator=(const String& str);
 
@@ -227,6 +229,24 @@ inline String operator+ (const String& lhs, const String& rhs)
     ret.Data[i]=tmp[i];
   }
   return ret;
+}
+
+inline char& String::operator[] (size_t pos)
+{
+  size_t tmp;
+  char ret;
+  
+  if(pos==Size){
+    ret='\0';
+    char& def_ref=ret;
+    return def_ref;
+  }
+
+  for (tmp=0; tmp<=pos; tmp++) {
+    ret= Data[tmp];
+  }
+  char& ref=ret;
+  return ref;
 }
 
 
