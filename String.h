@@ -66,6 +66,7 @@ class String
     // =======================================================================
     inline unsigned int getSize(void) const;
     inline char * getString(void) const;
+    inline char getLetter(int pos) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -76,26 +77,13 @@ class String
    
     /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
      */
-    /*inline string operator+ (const string& lhs, char rhs);
-    inline string operator+ (char lhs, const string& rhs);*/
 
     friend inline String operator+ (const String& lhs, const String& rhs);
-    friend inline String operator+ (const String& lhs, char rhs);
-    friend inline String operator+ (char lhs, const String& rhs);
-
-    /* Returns a new object string which contains rhs and lhs at the end*/
+    friend  String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
-    /* Assigns a new value to a string, from a c-string*/
-
-    //friend inline String& operator=(const String& str);
-   
-  //String& operator=( const String& other );
-
-    inline String& operator=(const String& str);
-
-
-    //String& operator=( const String& other );
+    /* Assigns a new value to a string, from a c-string (str)*/
+   // String& operator=(const String& str);
 
     // =======================================================================
     //                              Public Methods
@@ -135,7 +123,7 @@ class String
     unsigned int sizeCalculation(void);
 
     /*Returns the size of string*/
-    unsigned int size(void) const;
+    size_t size(void) const;
 
  
 
@@ -179,12 +167,17 @@ class String
 // ===========================================================================
 inline unsigned int String::getSize(void) const
 {
-    return Size;
+  return Size;
 }
 
 inline char * String::getString(void) const
 {
-    return Data;
+  return Data;
+}
+
+inline char String::getLetter(int pos) const
+{
+  return Data[pos];
 }
 // ===========================================================================
 //                              Setters' definitions
@@ -229,10 +222,10 @@ inline String operator+ (const String& lhs, const String& rhs)
 
 
 
+
 // ===========================================================================
 //                          Inline functions' definition
 // ===========================================================================
 
 
 #endif // __STRING_H__
-
