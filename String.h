@@ -220,15 +220,14 @@ inline String operator+ (const String& lhs, const String& rhs)
   int sum = lhs.size() + rhs.size();
   String ret = lhs;
   int rsz =rhs.size();
-  char* tmp = new char [rsz];
+  char* tmp = new char [rsz+1];
   tmp= rhs.Data;
   ret.resize(sum);
-  for(int i = lhs.size() ; i<sum; i++) {
+  for(int i = (lhs.size()-1) ; i<sum+1; i++) {
     ret.Data[i]=tmp[i];
   }
   return ret;
 }
-
 
 
 

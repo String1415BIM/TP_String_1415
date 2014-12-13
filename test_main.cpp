@@ -132,6 +132,12 @@ int main(int argc, char* argv[])
   test_operator2= test_operator1 + letter;
   printf("%s %d, \n",test_operator2.c_str(), test_operator2.size()); /*test_operator2.c_str());*/
 
+  //Test on operators of Student 3
+  String test_op_1=String("test operat");
+  String test_op_2=String("eur");
+  String returned_Str = test_op_1 + test_op_2;
+  printf("%s \n", returned_Str.c_str() );
+
   return 0;
 
 }
