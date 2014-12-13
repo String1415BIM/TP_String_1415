@@ -62,16 +62,19 @@ int main(int argc, char* argv[])
   printf("%s\n",test_cstring->c_str()); 
   printf("%d\n",test_cstring->size());
 
+  //creating default string
+  String* def_string = new String();
+
 
 
 
   //test MAX_SIZE
-<<<<<<< HEAD
+
   printf("Max size test \n");
   printf("max_size=%d \n",test->max_size());
-=======
-  printf("max_size=%d \n",test_cstring->max_size());
->>>>>>> e5f1302518b7e7891ff58107803b36c3f2f54249
+
+  //printf("max_size=%d \n",test_cstring->max_size());
+
 
   
   //test resize
@@ -104,6 +107,9 @@ int main(int argc, char* argv[])
 
   printf("Empty test \n");
   printf("booleen : %d \n",test_cstring->empty());
+  printf("booleen : %d \n",def_string->empty());
+
+
 
   //Test on clear method
   char word[]="Link list";

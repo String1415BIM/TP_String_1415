@@ -208,7 +208,7 @@ bool String::empty (void) const
 
 {
   bool ret = 0;
-  if (Size==0){
+  if (Size==1){
     ret = 1;
   }
   return ret;
