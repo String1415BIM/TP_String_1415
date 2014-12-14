@@ -201,9 +201,20 @@ inline char String::getLetter(int pos) const
 
 
 //Operator +
+//Add  a char
 inline String String::operator+ (char rhs)
 {
+  //If Capacity=Size, we had to up Capacity
+  if(this->Size+1>Capacity) 
+  {
+    reserve(Size+10);
+  }
+  
+  this->Size=Size+1;
+  this->Data[Size-2]=rhs;
+  this->Data[Size-1]='\0';
 
+  return *this;
 }
 
 inline String operator+ (const String& lhs, const String& rhs)
@@ -251,7 +262,7 @@ inline String& String::operator= (const String& str)
   Size=str.Size;
   Capacity=str.Capacity;
   memcpy(Data, str.Data, str.Size);
-  
+
   return *this;
 }
 
