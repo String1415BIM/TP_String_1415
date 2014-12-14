@@ -228,13 +228,13 @@ inline char& String::operator[] (size_t pos)
   
   if(pos==Size){
     ret='\0';
-    char& def_ref=ret;
-    return def_ref;
+    char& ref_1=ret;
+    return ref_1;
   } else {
-    ret= Data[pos];
+    ret= Data[pos];  
+    char& ref_2=ret;
+    return ref_2;
   }
-  char& ref=ret;
-  return ref;
 }
 
 //Operator =
