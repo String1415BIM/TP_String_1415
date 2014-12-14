@@ -241,19 +241,6 @@ size_t String::length() const
 
 
 
-String& String::operator= (char c)
-{
-  int i;
-
-  this->clear();
-
-  this->Data[0] = c;
-
-  Size = 1;
-  return *this;
-}
-
-
 void String::clear(void)
 {
   Data[0]='\0';
