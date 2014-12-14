@@ -39,7 +39,7 @@
 //                                  Constructors
 // ===========================================================================
 
-//Default constructor
+//Creation of default constructor
 String::String(void)
 {
   Data = NULL;
@@ -48,19 +48,33 @@ String::String(void)
 }
 
 
-//Constructor from a c-string
+unsigned int String::sizeCalculation(void)
+{
+  unsigned int i=0;
+  while(Data[i]!='\0')
+    {
+      i++; 
+    }
+    return (i+1);
+}
+
+//Creation of constructor from a c-string
 String::String(const char * s)
 {
+  //Size of s
   int Size_temp = 0;
   while( s[Size_temp] != '\0')
   {
     Size_temp ++;
   }
   Size= Size_temp +1;
+  //Minimum capacity set at size value
   Capacity= Size;
+  //Copy s into a String object
   Data = new char [Size];
   memcpy(Data,s,Capacity*sizeof(*Data));	
 }
+
 
 //Copy constructor
 String::String(const String& str)
@@ -76,8 +90,11 @@ String::String(const String& str)
 // ===========================================================================
 String::~String(void)
 {
-  delete [] Data;
-  Data = NULL;
+  if (Data!=NULL)
+  {
+    delete [] Data;
+    Data = NULL;
+  }
 }
 
 // ===========================================================================
@@ -112,7 +129,6 @@ void String::resize (size_t n) //cas ou Size=n
     {
       Data[i] = '\0';
     }
-    Size = n+1;
   }
 
 }
@@ -140,21 +156,20 @@ void String::resize (size_t n, char c)
     }
     Size = n+1;  
   }
+  if (Size == n)
+  {
+    reserve(Size+2);
+    Data[Size-1]=c;
+    Size=Size+1;   
+  }
 }
 
 char& String::at (size_t pos)
 {
   static char s = '\0';
-  unsigned int i=0;
-  while(Data[i]!='\0')
-  {
-    if (pos == i)
-    {
-      s = Data[i];
-    }
-    i++;
-  }
-  if (pos >= Size)
+  s = Data[pos];
+  //If index is non correct
+  if ((pos >= Size)||(pos<0))
   {
     throw std::out_of_range("Index asked is more than the string length.\n");
   }
@@ -176,7 +191,6 @@ const char& String::at (size_t pos) const
   }
   if (pos >= Size)
   {
-    //printf("Index value asked is more than the string length.\n");
     throw std::out_of_range("Index value asked is more than the string length.\n");
   }
   return s; 
@@ -214,15 +228,6 @@ bool String::empty (void) const
   return ret;
 }
 
-unsigned int String::sizeCalculation(void)
-{
-	unsigned int i=0;
-	while(Data[i]!='\0')
-    {
-      i++; 
-    }
-    return (i+1);
-}
 
 size_t String::size(void) const
 {
@@ -234,30 +239,28 @@ size_t String::length() const
   return (Size-1);
 }
 
+
+
+String& String::operator= (char c)
+{
+  int i;
+
+  this->clear();
+
+  this->Data[0] = c;
+
+  Size = 1;
+  return *this;
+}
+
+
 void String::clear(void)
 {
   Data[0]='\0';
   Size=1;
 }
 
-String operator+ (const String& lhs, char rhs)
-{
-  String ret= String();
-  ret.Size=lhs.size()+1;
-  ret.reserve(ret.Size);
-  //memcpy(ret.Data, lhs.Data, lhs.Size*sizeof(ret.Data));
-  //ret.resize(ret.size()+2, rhs);
-  return ret;
-}
 
-/*String& operator=(const String& str)
-{
-  static String rtn_value=String(str);
-  rtn_value.resize(str.size());
-  rtn_value.Data=str.c_str();
-  printf("%s, %d\n", rtn_value.c_str(), rtn_value.size());
-  return rtn_value;
-} */  
 
 
 
