@@ -46,7 +46,7 @@ unsigned int String::MAX_SIZE = 100;
 int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
-  String *  test =new String();
+  String *  test = new String();
 
 
   //test c-string constructor
@@ -82,6 +82,9 @@ int main(int argc, char* argv[])
   printf("Resize test \n");
   test_cstring->resize (10);
   printf("resize: %s \n",test_cstring->c_str());
+
+  test_cstring->resize (8, 'a');
+  printf("resize: %s \n",test_cstring->c_str());
   
   test_cstring->resize (5, 'a');
   printf("resize: %s \n",test_cstring->c_str());
@@ -91,6 +94,15 @@ int main(int argc, char* argv[])
 
   //test at
   printf("At index asked, char= %c \n",test_cstring->at (5));
+
+
+  //Test on '= operator' on a char
+
+  
+  /*mot2="Bonjour"; //test avec le operateur=string
+  mot2 = 'c';
+  printf("%c\nlength: %d\n",mot2[0],mot2.length());*/
+
 
 
   //Test on reserve, capacity, empty methods
@@ -145,10 +157,12 @@ int main(int argc, char* argv[])
     // Test of operator =(char*)
   String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
-  char toPut[] = "Hello";
+
+
+  char* toPut = "Hello";
   printf("%s \n", toPut );
   myString1=toPut;
-  printf("%s\n", myString1.c_str() );
+  printf("Finalement : %s\n", myString1.c_str() );
 
   return 0;
 
