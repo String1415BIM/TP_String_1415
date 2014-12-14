@@ -213,16 +213,31 @@ inline String String::operator+ (char rhs)
 
 inline String operator+ (const String& lhs, const String& rhs)
 {
-  int sum = lhs.size() + rhs.size();
-  String ret = lhs;
-  int rsz =rhs.size();
-  char* tmp = new char [rsz+1];
-  tmp= rhs.Data;
-  ret.resize(sum);
-  for(int i = (lhs.size()-1) ; i<sum+1; i++) {
-    ret.Data[i]=tmp[i];
+  int sum = lhs.size() + rhs.size()+1;
+  
+  String* ret= new String();
+  
+  ret->resize(sum);
+  ret->reserve(sum);
+  
+  delete [] ret->Data;
+  ret->Data = new char[sum];
+
+  char* NewData= new char[sum];
+    
+  for(int i = 0 ; i<(lhs.size()); i++) {
+    NewData[i]=lhs.Data[i];
   }
-  return ret;
+
+  for(int i=lhs.size(); i<(sum-2); i++){
+    NewData[i]=rhs.Data[i-(lhs.size())];
+  }
+  NewData[(sum-1)]= '\0';
+  
+  memcpy(ret->Data, NewData, sum*sizeof(char) );
+  delete [] NewData;
+  
+  return *ret;
 }
 
 inline char& String::operator[] (size_t pos)
@@ -275,6 +290,7 @@ inline String& String::operator= (char c)
   //Size function return (Size-1)
   //So size of char is 2
   Size = 2; 
+}
 
 inline String& String::operator= (const char* s)
 {
