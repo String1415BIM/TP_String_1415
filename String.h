@@ -216,7 +216,7 @@ inline String operator+ (const String& lhs, const String& rhs)
 
   for(int i = 0 ; i<(lhs.size()); i++) {
     NewData[i]=lhs.Data[i];
-    count=1;
+    count=i;
   }
 
   for(int i=0; i<rhs.size(); i++){
