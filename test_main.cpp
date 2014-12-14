@@ -149,10 +149,11 @@ int main(int argc, char* argv[])
     // Test of operator =(char*)
   String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
+
   char* toPut = "Hello";
   printf("%s \n", toPut );
   myString1=toPut;
-  printf("%s\n", myString1.c_str() );
+  printf(" Finalement : %s\n", myString1.c_str() );
 
   return 0;
 
