@@ -151,9 +151,14 @@ int main(int argc, char* argv[])
   printf("%s \n", returned_Str.c_str() );
 
     // Test of operator []
-  /*for(int i=0; i<test_op_1.size() +1; i++) {
+  for (int i=0; i<=test_operator1.size(); i++) {
+    printf("%c\n", test_operator1[i] );
+  }
+
+  printf("Character null : %c\n", test_operator1[12] );
+
     
-  }*/
+ 
   //printf("%c   %c    %c \n", test_op_1.c_str[0], test_op_1.c_str[3], test_op_1.c_str[test_op_1.size()]);
     // Test of operator =(char*)
   String myString1=String("Bonjour");
