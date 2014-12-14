@@ -145,6 +145,8 @@ class String
     size_t length() const;
 
  
+    String& operator=(char c);
+    String operator+ (const char* rhs);
 
     /* Erase string contents and affects 0 to size*/
     void clear(void);
