@@ -211,29 +211,22 @@ inline String operator+ (const String& lhs, const String& rhs)
 {
   int sum = lhs.size() + rhs.size()+1;
   
-  String* ret= new String();
-  
-  ret->resize(sum);
-  ret->reserve(sum);
-  
-  delete [] ret->Data;
-  ret->Data = new char[sum];
-
   char* NewData= new char[sum];
-    
+  int count=0;
+
   for(int i = 0 ; i<(lhs.size()); i++) {
     NewData[i]=lhs.Data[i];
+    count=1;
   }
 
-  for(int i=lhs.size(); i<(sum-2); i++){
-    NewData[i]=rhs.Data[i-(lhs.size())];
+  for(int i=0; i<rhs.size(); i++){
+    NewData[i+count+1]=rhs.Data[i];
   }
+
   NewData[(sum-1)]= '\0';
-  
-  memcpy(ret->Data, NewData, sum*sizeof(char) );
-  delete [] NewData;
-  
-  return *ret;
+  String* ret = new String(NewData);
+
+return *ret;
 }
 
 inline char& String::operator[] (size_t pos)
@@ -288,7 +281,7 @@ inline String& String::operator= (char c)
   Size = 2; 
 }
 
-/*nline String& String::operator= (const char* s)
+inline String& String::operator= (const char* s)
 {
   delete[] Data;
   int NewSize=0;
@@ -301,7 +294,7 @@ inline String& String::operator= (char c)
   Data= new char [NewSize];
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
-}*/
+}
 
 
 inline String& String::operator= (const String& str)

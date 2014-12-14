@@ -159,8 +159,9 @@ int main(int argc, char* argv[])
   String test_op_2=String("eur");
     
     // Test of operator +(string)
-  //String returned_Str = test_op_1 + test_op_2; 
-  //printf("%s \n", returned_Str.c_str() );
+  
+  String returned_Str= test_op_1 + test_op_2; 
+  printf("%s \n", returned_Str.c_str() );
 
     // Test of operator []
   for (int i=0; i<=test_operator1.size(); i++) {
@@ -179,7 +180,7 @@ int main(int argc, char* argv[])
 
   char* toPut = "Hello";
   printf("%s \n", toPut );
-  myString1=toPut;
+  myString1= toPut;
 
   printf("%s\n", myString1.c_str() );
 
