@@ -79,14 +79,14 @@ class String
      */
 
     friend inline String operator+ (const String& lhs, const String& rhs);
-    friend  String operator+ (const String& lhs, char rhs);
+    inline String operator+ (char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
     inline char& operator[] (size_t pos);
     inline String& operator= (const char* s);
 
     /* Assigns a new value to a string, from a c-string (str)*/
-   // String& operator=(const String& str);
+    inline String& operator= (const String& str);
 
     // =======================================================================
     //                              Public Methods
@@ -199,24 +199,12 @@ inline char String::getLetter(int pos) const
 //                             Operators' definitions
 // ===========================================================================
 
-/*inline string operator+ (const string& lhs, char rhs)
+
+//Operator +
+inline String String::operator+ (char rhs)
 {
-  int NewSize = lhs.size()+1;
-  String ret = lhs;
-  ret.resize(NewSize);
-  ret.Data[NewSize]= rhs;
-  return ret;
+
 }
-
-inline String operator+ (char lhs, const string& rhs)
-
-{
-  int NewSize = rhs.size()+1;
-  String ret = lhs;
-  ret.resize(NewSize);
-  ret.Data[NewSize]= rhs;
-  return ret;
-  }*/
 
 inline String operator+ (const String& lhs, const String& rhs)
 {
@@ -248,12 +236,24 @@ inline char& String::operator[] (size_t pos)
   return ref;
 }
 
+//Operator =
 inline String& String::operator= (const char* s) {
   String*  ret = new String (s);
   String& ref_ret= *ret;
   return ref_ret;
 }
 
+inline String& String::operator= (const String& str)
+{
+  delete [] Data; //if Data is not empty
+
+  Data=new char [str.Capacity];
+  Size=str.Size;
+  Capacity=str.Capacity;
+  memcpy(Data, str.Data, str.Size);
+  
+  return *this;
+}
 
 // ===========================================================================
 //                          Inline functions' definition

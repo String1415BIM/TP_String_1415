@@ -76,8 +76,11 @@ String::String(const String& str)
 // ===========================================================================
 String::~String(void)
 {
-  delete [] Data;
-  Data = NULL;
+  if (Data!=NULL)
+  {
+    delete [] Data;
+    Data = NULL;
+  }
 }
 
 // ===========================================================================
@@ -240,24 +243,7 @@ void String::clear(void)
   Size=1;
 }
 
-String operator+ (const String& lhs, char rhs)
-{
-  String ret= String();
-  ret.Size=lhs.size()+1;
-  ret.reserve(ret.Size);
-  //memcpy(ret.Data, lhs.Data, lhs.Size*sizeof(ret.Data));
-  //ret.resize(ret.size()+2, rhs);
-  return ret;
-}
 
-/*String& operator=(const String& str)
-{
-  static String rtn_value=String(str);
-  rtn_value.resize(str.size());
-  rtn_value.Data=str.c_str();
-  printf("%s, %d\n", rtn_value.c_str(), rtn_value.size());
-  return rtn_value;
-} */  
 
 
 
