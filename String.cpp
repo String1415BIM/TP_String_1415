@@ -43,7 +43,7 @@
 String::String(void)
 {
   Data = NULL;
-  Size = 0;	
+  Size = 1;	//including '\0'
   Capacity= 0;	
 }
 
@@ -90,8 +90,11 @@ String::String(const String& str)
 // ===========================================================================
 String::~String(void)
 {
-  delete [] Data;
-  Data = NULL;
+  if (Data!=NULL)
+  {
+    delete [] Data;
+    Data = NULL;
+  }
 }
 
 // ===========================================================================
@@ -106,7 +109,7 @@ size_t String::max_size(void) const
 }
 
 
-void String::resize (size_t n)
+void String::resize (size_t n) //cas ou Size=n
 {
   if (Size > n)
   {
@@ -200,7 +203,7 @@ size_t String::capacity (void) const
   return (Capacity-1)*sizeof(char);
 }
 
-void String :: reserve (size_t n)
+void String::reserve (size_t n)
 {
   if(Capacity<n) 
   {
@@ -215,11 +218,11 @@ char * String::c_str(void) const
 }
 
 
-
 bool String::empty (void) const
+
 {
   bool ret = 0;
-  if (Size==0){
+  if (Size==1){
     ret = 1;
   }
   return ret;
@@ -256,6 +259,8 @@ void String::clear(void)
   Data[0]='\0';
   Size=1;
 }
+
+
 
 
 

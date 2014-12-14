@@ -66,6 +66,7 @@ class String
     // =======================================================================
     inline unsigned int getSize(void) const;
     inline char * getString(void) const;
+    inline char getLetter(int pos) const;
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -76,26 +77,16 @@ class String
    
     /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
      */
-    /*inline string operator+ (const string& lhs, char rhs);
-    inline string operator+ (char lhs, const string& rhs);*/
 
     friend inline String operator+ (const String& lhs, const String& rhs);
-    friend inline String operator+ (const String& lhs, char rhs);
-    friend inline String operator+ (char lhs, const String& rhs);
-
-    /* Returns a new object string which contains rhs and lhs at the end*/
+    inline String operator+ (char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
-    /* Assigns a new value to a string, from a c-string*/
+    inline char& operator[] (size_t pos);
+    inline String& operator= (const char* s);
 
-    //friend inline String& operator=(const String& str);
-   
-  //String& operator=( const String& other );
-
-    inline String& operator=(const String& str);
-
-
-    //String& operator=( const String& other );
+    /* Assigns a new value to a string, from a c-string (str)*/
+    inline String& operator= (const String& str);
 
     // =======================================================================
     //                              Public Methods
@@ -142,7 +133,9 @@ class String
 
     /*Returns the size of string*/
     size_t size(void) const;
+    
     size_t length() const;
+
 
  
     String& operator=(char c);
@@ -188,12 +181,17 @@ class String
 // ===========================================================================
 inline unsigned int String::getSize(void) const
 {
-    return Size;
+  return Size;
 }
 
 inline char * String::getString(void) const
 {
-    return Data;
+  return Data;
+}
+
+inline char String::getLetter(int pos) const
+{
+  return Data[pos];
 }
 // ===========================================================================
 //                              Setters' definitions
@@ -203,40 +201,61 @@ inline char * String::getString(void) const
 //                             Operators' definitions
 // ===========================================================================
 
-/*inline string operator+ (const string& lhs, char rhs)
+
+//Operator +
+inline String String::operator+ (char rhs)
 {
-  int NewSize = lhs.size()+1;
-  String ret = lhs;
-  ret.resize(NewSize);
-  ret.Data[NewSize]= rhs;
-  return ret;
+
 }
-
-inline String operator+ (char lhs, const string& rhs)
-
-{
-  int NewSize = rhs.size()+1;
-  String ret = lhs;
-  ret.resize(NewSize);
-  ret.Data[NewSize]= rhs;
-  return ret;
-  }*/
 
 inline String operator+ (const String& lhs, const String& rhs)
 {
   int sum = lhs.size() + rhs.size();
   String ret = lhs;
   int rsz =rhs.size();
-  char* tmp = new char [rsz];
+  char* tmp = new char [rsz+1];
   tmp= rhs.Data;
-  // ret.resize(sum);
-  for(int i = lhs.size() ; i<sum; i++) {
+  ret.resize(sum);
+  for(int i = (lhs.size()-1) ; i<sum+1; i++) {
     ret.Data[i]=tmp[i];
   }
   return ret;
 }
 
+inline char& String::operator[] (size_t pos)
+{
+  size_t tmp;
+  char ret;
+  
+  if(pos==Size){
+    ret='\0';
+    char& def_ref=ret;
+    return def_ref;
+  } else {
+    ret= Data[pos];
+  }
+  char& ref=ret;
+  return ref;
+}
 
+//Operator =
+inline String& String::operator= (const char* s) {
+  String*  ret = new String (s);
+  String& ref_ret= *ret;
+  return ref_ret;
+}
+
+inline String& String::operator= (const String& str)
+{
+  delete [] Data; //if Data is not empty
+
+  Data=new char [str.Capacity];
+  Size=str.Size;
+  Capacity=str.Capacity;
+  memcpy(Data, str.Data, str.Size);
+  
+  return *this;
+}
 
 // ===========================================================================
 //                          Inline functions' definition
@@ -244,4 +263,3 @@ inline String operator+ (const String& lhs, const String& rhs)
 
 
 #endif // __STRING_H__
-
