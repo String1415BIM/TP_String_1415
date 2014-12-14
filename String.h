@@ -239,19 +239,18 @@ inline char& String::operator[] (size_t pos)
 }
 
 //Operator =
-inline String& String::operator= (const char* s) {
-  //String*  ret = new String ();
+inline String& String::operator= (const char* s)
+{
+  delete[] Data;
   int NewSize=0;
-  char c;
 
-  for 
-  while(c != '\0'){
+  while(s[NewSize] != '\0'){
     NewSize++;
   }
   this->Size=NewSize;
-  this->Capacity=NewSize; 
+  this->Capacity=NewSize;
+  Data= new char [NewSize];
   memcpy(this->Data, s, NewSize*sizeof(char) );
-  //String& ref_ret= *ret;
   return *this;
 }
 
