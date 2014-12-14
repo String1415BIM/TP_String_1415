@@ -141,6 +141,16 @@ int main(int argc, char* argv[])
   printf("%s (%d, capacity=%d)\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
 
 
+  //Test on operators of Student 2
+  printf("Test Noelie operator \n");
+  String test_1=String("Team Rocket");
+  printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
+  char a = 'a';
+  test_1 = a;
+  printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
+
+
+  printf("Fin test Noelie operator \n");
   //Test on operators of Student 3
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
@@ -150,19 +160,28 @@ int main(int argc, char* argv[])
   printf("%s \n", returned_Str.c_str() );
 
     // Test of operator []
-  /*for(int i=0; i<test_op_1.size() +1; i++) {
+  for (int i=0; i<=test_operator1.size(); i++) {
+    printf("%c\n", test_operator1[i] );
+  }
+
+  printf("Character null : %c\n", test_operator1[12] );
+
     
-  }*/
+ 
   //printf("%c   %c    %c \n", test_op_1.c_str[0], test_op_1.c_str[3], test_op_1.c_str[test_op_1.size()]);
     // Test of operator =(char*)
-  String myString1=String("Bonjour");
+  /*String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
 
 
   char* toPut = "Hello";
   printf("%s \n", toPut );
   myString1=toPut;
+
+  printf("%s\n", myString1.c_str() );*/
+
   printf("Finalement : %s\n", myString1.c_str() );
+
 
   return 0;
 

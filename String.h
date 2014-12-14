@@ -82,8 +82,13 @@ class String
     inline String operator+ (char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
+    /* Returns a reference to the character at position pos in the string. 
+     */
     inline char& operator[] (size_t pos);
+    inline const char& operator[] (size_t pos) const;
+
     inline String& operator= (const char* s);
+    inline String& operator= (char c);
 
     /* Assigns a new value to a string, from a c-string (str)*/
     inline String& operator= (const String& str);
@@ -138,8 +143,6 @@ class String
 
 
  
-    String& operator=(char c);
-    String operator+ (const char* rhs);
 
     /* Erase string contents and affects 0 to size*/
     void clear(void);
@@ -240,16 +243,50 @@ inline char& String::operator[] (size_t pos)
   
   if(pos==Size){
     ret='\0';
-    char& def_ref=ret;
-    return def_ref;
+    char& ref_1=ret;
+    return ref_1;
   } else {
-    ret= Data[pos];
+    ret= Data[pos];  
+    char& ref_2=ret;
+    return ref_2;
   }
-  char& ref=ret;
-  return ref;
+}
+
+inline const char& String::operator[] (size_t pos) const
+{
+  size_t tmp;
+  char ret;
+  
+  if(pos==Size){
+    ret='\0';
+    const char& ref_1=ret;
+    return ref_1;
+  } else {
+    ret= Data[pos];  
+    const char& ref_2=ret;
+    return ref_2;
+  }
 }
 
 //Operator =
+
+/*inline String& String::operator= (const char* s) {
+  String*  ret = new String (s);
+  String& ref_ret= *ret;
+  return ref_ret;
+}*/
+
+
+inline String& String::operator= (char c)
+{
+  int i;
+
+  this->clear();
+  this->Data[0] = c;
+  //Size function return (Size-1)
+  //So size of char is 2
+  Size = 2; 
+
 inline String& String::operator= (const char* s)
 {
   delete[] Data;
@@ -264,6 +301,7 @@ inline String& String::operator= (const char* s)
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
 }
+
 
 inline String& String::operator= (const String& str)
 {
