@@ -88,6 +88,7 @@ class String
     inline const char& operator[] (size_t pos) const;
 
     inline String& operator= (const char* s);
+    inline String& operator= (char c);
 
     /* Assigns a new value to a string, from a c-string (str)*/
     inline String& operator= (const String& str);
@@ -142,8 +143,6 @@ class String
 
 
  
-    String& operator=(char c);
-    String operator+ (const char* rhs);
 
     /* Erase string contents and affects 0 to size*/
     void clear(void);
@@ -259,6 +258,24 @@ inline const char& String::operator[] (size_t pos) const
 }
 
 //Operator =
+
+/*inline String& String::operator= (const char* s) {
+  String*  ret = new String (s);
+  String& ref_ret= *ret;
+  return ref_ret;
+}*/
+
+
+inline String& String::operator= (char c)
+{
+  int i;
+
+  this->clear();
+  this->Data[0] = c;
+  //Size function return (Size-1)
+  //So size of char is 2
+  Size = 2; 
+
 inline String& String::operator= (const char* s)
 {
   delete[] Data;
@@ -273,6 +290,7 @@ inline String& String::operator= (const char* s)
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
 }
+
 
 inline String& String::operator= (const String& str)
 {
