@@ -45,7 +45,7 @@ unsigned int String::MAX_SIZE = 100;
 int main(int argc, char* argv[])
 {
   printf("Hello World !\n");
-  String *  test =new String();
+  String *  test = new String();
 
 
   //test c-string constructor
@@ -83,6 +83,15 @@ int main(int argc, char* argv[])
 
   //test at
   printf("At index asked, char= %c \n",test_cstring->at (5));
+
+
+  //Test on '= operator' on a char
+
+  
+  /*mot2="Bonjour"; //test avec le operateur=string
+  mot2 = 'c';
+  printf("%c\nlength: %d\n",mot2[0],mot2.length());*/
+
 
 
   //Test on reserve, capacity, empty methods
