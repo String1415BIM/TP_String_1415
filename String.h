@@ -64,9 +64,7 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    inline unsigned int getSize(void) const;
-    inline char * getString(void) const;
-    inline char getLetter(int pos) const;
+
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -182,20 +180,7 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-inline unsigned int String::getSize(void) const
-{
-  return Size;
-}
 
-inline char * String::getString(void) const
-{
-  return Data;
-}
-
-inline char String::getLetter(int pos) const
-{
-  return Data[pos];
-}
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
@@ -286,8 +271,9 @@ inline String& String::operator= (char c)
   //Size function return (Size-1)
   //So size of char is 2
   Size = 2; 
+}
 
-inline String& String::operator= (const char* s)
+/*nline String& String::operator= (const char* s)
 {
   delete[] Data;
   int NewSize=0;
@@ -300,7 +286,7 @@ inline String& String::operator= (const char* s)
   Data= new char [NewSize];
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
-}
+}*/
 
 
 inline String& String::operator= (const String& str)
