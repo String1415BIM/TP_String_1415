@@ -243,7 +243,11 @@ size_t String::length() const
 
 void String::clear(void)
 {
-  Data[0]='\0';
+  int i=0;
+  while(at(i)!='\0')
+  {
+    Data[i]='\0';
+  }
   Size=1;
 }
 

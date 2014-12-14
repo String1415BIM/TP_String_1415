@@ -135,11 +135,10 @@ int main(int argc, char* argv[])
   //Test on operators of Student 1
   String test_operator1=String("Team Rocket");
   printf("%s (%d) + !\n", test_operator1.c_str(), test_operator1.size());
-  String test_operator2;
+  String test_operator2= String ();
   printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
-  test_operator2= test_operator1;
-  /*test_operator2 = test_operator1 + '!';*/
-  printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
+  test_operator2 = test_operator1 + '!';
+  printf("%s (%d, capacity=%d)\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
 
 
   //Test on operators of Student 2

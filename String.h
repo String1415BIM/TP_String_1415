@@ -64,9 +64,7 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    inline unsigned int getSize(void) const;
-    inline char * getString(void) const;
-    inline char getLetter(int pos) const;
+
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -182,20 +180,7 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-inline unsigned int String::getSize(void) const
-{
-  return Size;
-}
 
-inline char * String::getString(void) const
-{
-  return Data;
-}
-
-inline char String::getLetter(int pos) const
-{
-  return Data[pos];
-}
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
@@ -206,9 +191,20 @@ inline char String::getLetter(int pos) const
 
 
 //Operator +
+//Add  a char
 inline String String::operator+ (char rhs)
 {
+  //If Capacity=Size, we had to up Capacity
+  if(this->Size+1>Capacity) 
+  {
+    reserve(Size+10);
+  }
+  
+  this->Size=Size+1;
+  this->Data[Size-2]=rhs;
+  this->Data[Size-1]='\0';
 
+  return *this;
 }
 
 inline String operator+ (const String& lhs, const String& rhs)
@@ -292,7 +288,7 @@ inline String& String::operator= (char c)
   Size = 2; 
 }
 
-inline String& String::operator= (const char* s)
+/*nline String& String::operator= (const char* s)
 {
   delete[] Data;
   int NewSize=0;
@@ -305,7 +301,7 @@ inline String& String::operator= (const char* s)
   Data= new char [NewSize];
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
-}
+}*/
 
 
 inline String& String::operator= (const String& str)
@@ -316,7 +312,7 @@ inline String& String::operator= (const String& str)
   Size=str.Size;
   Capacity=str.Capacity;
   memcpy(Data, str.Data, str.Size);
-  
+
   return *this;
 }
 
