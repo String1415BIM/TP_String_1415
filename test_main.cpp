@@ -122,16 +122,13 @@ int main(int argc, char* argv[])
 
   //Test on operators of Student 1
   String test_operator1=String("Team Rocket");
-  char letter= 's';
-  /*printf("\n\nOperator=\n %s\n", test_operator1.c_str());
-  String test_operator2=String();
-  //test_operator2 = test_operator1;
-  printf("%s, %d\n", test_operator2.c_str(), test_operator2.size());
-  */
-  printf("%s (%d) + %c\n", test_operator1.c_str(), test_operator1.size(), letter);
-  String test_operator2=String();
-  test_operator2= test_operator1 + letter;
-  printf("%s %d, \n",test_operator2.c_str(), test_operator2.size()); /*test_operator2.c_str());*/
+  printf("%s (%d) + !\n", test_operator1.c_str(), test_operator1.size());
+  String test_operator2;
+  printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
+  test_operator2= test_operator1;
+  /*test_operator2 = test_operator1 + '!';*/
+  printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
+
 
   //Test on operators of Student 3
   String test_op_1=String("test operat");
@@ -149,7 +146,7 @@ int main(int argc, char* argv[])
     // Test of operator =(char*)
   String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
-  char* toPut = "Hello";
+  char toPut[] = "Hello";
   printf("%s \n", toPut );
   myString1=toPut;
   printf("%s\n", myString1.c_str() );
