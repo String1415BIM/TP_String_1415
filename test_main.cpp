@@ -157,11 +157,15 @@ int main(int argc, char* argv[])
 
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
+  char* char_test = " foo";
     
     // Test of operator +(string)
   
   String returned_Str= test_op_1 + test_op_2; 
   printf("%s \n", returned_Str.c_str() );
+
+  String returned_chr = returned_Str + char_test;
+  printf("%s \n", returned_chr.c_str() );
 
     // Test of operator []
   for (int i=0; i<=test_operator1.size(); i++) {

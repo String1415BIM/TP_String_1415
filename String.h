@@ -79,7 +79,7 @@ class String
     friend inline String operator+ (const String& lhs, const String& rhs);
     inline String operator+ (char rhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
-
+    friend inline String operator+ (const String& lhs, const char* rhs);
     /* Returns a reference to the character at position pos in the string. 
      */
     inline char& operator[] (size_t pos);
@@ -224,6 +224,33 @@ inline String operator+ (const String& lhs, const String& rhs)
   }
 
   NewData[(sum-1)]= '\0';
+  String* ret = new String(NewData);
+
+return *ret;
+}
+
+inline String operator+ (const String& lhs, const char* rhs)
+{
+  int r_sz=0;
+  while(rhs[r_sz] != '\0') {
+    r_sz++;
+  }
+
+  int sum2=lhs.size()+r_sz+1;
+
+  char* NewData= new char[sum2];
+  int count=0;
+
+  for(int i = 0 ; i<(lhs.size()); i++) {
+    NewData[i]=lhs.Data[i];
+    count=i;
+  }
+
+  for(int i=0; i<r_sz; i++){
+    NewData[i+count+1]=rhs[i];
+  }
+  
+  NewData[(sum2-1)]='\0';
   String* ret = new String(NewData);
 
 return *ret;
