@@ -138,6 +138,7 @@ int main(int argc, char* argv[])
   String test_operator2= String ();
   printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
   test_operator2 = test_operator1 + '!';
+  test_operator2 = '?' + test_operator1;
   printf("%s (%d, capacity=%d)\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
 
 
@@ -180,7 +181,7 @@ int main(int argc, char* argv[])
 
   printf("%s\n", myString1.c_str() );*/
 
-  printf("Finalement : %s\n", myString1.c_str() );
+//  printf("Finalement : %s\n", myString1.c_str() );
 
 
   return 0;
