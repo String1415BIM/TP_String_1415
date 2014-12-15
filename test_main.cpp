@@ -152,14 +152,24 @@ int main(int argc, char* argv[])
 
 
   printf("Fin test Noelie operator \n");
-  //Test on operators of Student 3
+  
+
+  //Test on operators of Student 3 
+
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
+  char* char_test = " foo";
     
     // Test of operator +(string)
-  String returned_Str = test_op_1 + test_op_2;
+  
+  String returned_Str= test_op_1 + test_op_2; 
   printf("%s \n", returned_Str.c_str() );
 
+  String returned_chr = returned_Str + char_test;
+  printf("%s \n", returned_chr.c_str() );
+
+  String returned_chr_2= char_test+test_op_1;
+  printf("%s \n", returned_chr_2.c_str() );
     // Test of operator []
   for (int i=0; i<=test_operator1.size(); i++) {
     printf("%c\n", test_operator1[i] );
@@ -169,17 +179,16 @@ int main(int argc, char* argv[])
 
     
  
-  //printf("%c   %c    %c \n", test_op_1.c_str[0], test_op_1.c_str[3], test_op_1.c_str[test_op_1.size()]);
     // Test of operator =(char*)
-  /*String myString1=String("Bonjour");
+  String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
 
 
   char* toPut = "Hello";
   printf("%s \n", toPut );
-  myString1=toPut;
+  myString1= toPut;
 
-  printf("%s\n", myString1.c_str() );*/
+  printf("%s\n", myString1.c_str() );
 
 //  printf("Finalement : %s\n", myString1.c_str() );
 

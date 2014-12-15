@@ -80,7 +80,7 @@ class String
     friend inline String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (char rhs, const String& lhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
-
+    friend inline String operator+ (const String& lhs, const char* rhs);
     /* Returns a reference to the character at position pos in the string. 
      */
     inline char& operator[] (size_t pos);
@@ -223,17 +223,80 @@ inline String operator+ (char rhs, const String& lhs)
 
 inline String operator+ (const String& lhs, const String& rhs)
 {
-  int sum = lhs.size() + rhs.size();
-  String ret = lhs;
-  int rsz =rhs.size();
-  char* tmp = new char [rsz+1];
-  tmp= rhs.Data;
-  ret.resize(sum);
-  for(int i = (lhs.size()-1) ; i<sum+1; i++) {
-    ret.Data[i]=tmp[i];
+  int sum = lhs.size() + rhs.size()+1;
+  
+  char* NewData= new char[sum];
+  int count=0;
+
+  for(int i = 0 ; i<(lhs.size()); i++) {
+    NewData[i]=lhs.Data[i];
+    count=i;
   }
-  return ret;
+
+  for(int i=0; i<rhs.size(); i++){
+    NewData[i+count+1]=rhs.Data[i];
+  }
+
+  NewData[(sum-1)]= '\0';
+  String* ret = new String(NewData);
+
+return *ret;
 }
+
+inline String operator+ (const String& lhs, const char* rhs)
+{
+  int r_sz=0;
+  while(rhs[r_sz] != '\0') {
+    r_sz++;
+  }
+
+  int sum2=lhs.size()+r_sz+1;
+
+  char* NewData= new char[sum2];
+  int count=0;
+
+  for(int i = 0 ; i<(lhs.size()); i++) {
+    NewData[i]=lhs.Data[i];
+    count=i;
+  }
+
+  for(int i=0; i<r_sz; i++){
+    NewData[i+count+1]=rhs[i];
+  }
+  
+  NewData[(sum2-1)]='\0';
+  String* ret = new String(NewData);
+
+return *ret;
+}
+
+inline String operator+ (const char* lhs, const String& rhs)
+{
+int r_sz=0;
+  while(lhs[r_sz] != '\0') {
+    r_sz++;
+  }
+
+  int sum3=rhs.size()+r_sz+1;
+
+  char* NewData= new char[sum3];
+  int count=0;
+
+  for(int i = 0 ; i<r_sz; i++) {
+    NewData[i]=lhs[i];
+    count=i;
+  }
+
+  for(int i=0; i<(rhs.size()); i++){
+    NewData[i+count+1]=rhs.Data[i];
+  }
+  
+  NewData[(sum3-1)]='\0';
+  String* ret = new String(NewData);
+
+return *ret;
+}
+
 
 inline char& String::operator[] (size_t pos)
 {
@@ -287,7 +350,7 @@ inline String& String::operator= (char c)
   Size = 2; 
 }
 
-/*nline String& String::operator= (const char* s)
+inline String& String::operator= (const char* s)
 {
   delete[] Data;
   int NewSize=0;
@@ -300,7 +363,7 @@ inline String& String::operator= (char c)
   Data= new char [NewSize];
   memcpy(this->Data, s, NewSize*sizeof(char) );
   return *this;
-}*/
+}
 
 
 inline String& String::operator= (const String& str)
