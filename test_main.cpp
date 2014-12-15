@@ -167,6 +167,8 @@ int main(int argc, char* argv[])
   String returned_chr = returned_Str + char_test;
   printf("%s \n", returned_chr.c_str() );
 
+  String returned_chr_2= char_test+test_op_1;
+  printf("%s \n", returned_chr_2.c_str() );
     // Test of operator []
   for (int i=0; i<=test_operator1.size(); i++) {
     printf("%c\n", test_operator1[i] );

@@ -256,6 +256,34 @@ inline String operator+ (const String& lhs, const char* rhs)
 return *ret;
 }
 
+inline String operator+ (const char* lhs, const String& rhs)
+{
+int r_sz=0;
+  while(lhs[r_sz] != '\0') {
+    r_sz++;
+  }
+
+  int sum3=rhs.size()+r_sz+1;
+
+  char* NewData= new char[sum3];
+  int count=0;
+
+  for(int i = 0 ; i<r_sz; i++) {
+    NewData[i]=lhs[i];
+    count=i;
+  }
+
+  for(int i=0; i<(rhs.size()); i++){
+    NewData[i+count+1]=rhs.Data[i];
+  }
+  
+  NewData[(sum3-1)]='\0';
+  String* ret = new String(NewData);
+
+return *ret;
+}
+
+
 inline char& String::operator[] (size_t pos)
 {
   size_t tmp;
