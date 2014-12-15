@@ -47,13 +47,13 @@ class String
     //                               Constructors
     // =======================================================================
     
-    //default constructor
+    //Default constructor
     String(void);
 
     //c-string constructor
     String(const char * s);
     
-    //copy consructor
+    //Copy consructor
     String(const String& str);
 
     // =======================================================================
@@ -77,7 +77,8 @@ class String
      */
 
     friend inline String operator+ (const String& lhs, const String& rhs);
-    inline String operator+ (char rhs);
+    friend inline String operator+ (const String& lhs, char rhs);
+    friend inline String operator+ (char rhs, const String& lhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
 
     /* Returns a reference to the character at position pos in the string. 
@@ -192,19 +193,32 @@ class String
 
 //Operator +
 //Add  a char
-inline String String::operator+ (char rhs)
+inline String operator+ (const String& lhs, char rhs)
 {
-  //If Capacity=Size, we had to up Capacity
-  if(this->Size+1>Capacity) 
-  {
-    reserve(Size+10);
-  }
-  
-  this->Size=Size+1;
-  this->Data[Size-2]=rhs;
-  this->Data[Size-1]='\0';
+  int SizeRet=lhs.size()+2; //size() doesn't include '\0'
+  char * DataRet=new char [SizeRet];
+  memcpy(DataRet, lhs.Data, SizeRet);
+  DataRet[SizeRet-2]=rhs;
+  DataRet[SizeRet-1]='\0';
+  String* ValRet=new String(DataRet);
 
-  return *this;
+  return *ValRet;
+}
+
+inline String operator+ (char rhs, const String& lhs)
+{
+  int SizeRet=lhs.size()+2;
+  char * DataRet=new char [SizeRet];
+  DataRet[0]=rhs;
+  for(int i=1; i<SizeRet; i++)
+  {
+    DataRet[i]=lhs.Data[i-1];
+    printf("%c\n", DataRet[i-1]);
+  }
+  DataRet[SizeRet-1]='\0';
+  String* ValRet=new String(DataRet);
+  
+  return *ValRet;
 }
 
 inline String operator+ (const String& lhs, const String& rhs)
