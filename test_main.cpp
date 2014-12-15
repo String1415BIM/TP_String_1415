@@ -176,7 +176,6 @@ int main(int argc, char* argv[])
 
     
  
-  //printf("%c   %c    %c \n", test_op_1.c_str[0], test_op_1.c_str[3], test_op_1.c_str[test_op_1.size()]);
     // Test of operator =(char*)
   String myString1=String("Bonjour");
   printf("%s \n", myString1.c_str() );
