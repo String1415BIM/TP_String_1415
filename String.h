@@ -16,7 +16,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include <string.h>
-
+#include <stdexcept>
 // ===========================================================================
 //                              Class declarations
 // ===========================================================================
@@ -55,8 +55,10 @@ class String
      
 
     friend inline String operator+ (const String& lhs, const String& rhs);
+
     friend inline String operator+ (const String& lhs, char rhs);
     friend inline String operator+ (char rhs, const String& lhs);
+    
     friend inline String operator+ (const char* lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, const char* rhs);
     
