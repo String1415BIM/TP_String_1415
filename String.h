@@ -200,7 +200,8 @@ class String
 
 
 //Operator +
-//Add  a char
+/*Add  a char
+ */
 inline String operator+ (const String& lhs, char rhs)
 {
   int SizeRet=lhs.size()+2; //size() doesn't include '\0'
@@ -229,11 +230,13 @@ inline String operator+ (char rhs, const String& lhs)
   return *ValRet;
 }
 
+/* Return a new string from two string references 
+ */
 inline String operator+ (const String& lhs, const String& rhs)
 {
-  int sum = lhs.size() + rhs.size()+1;
+  int sum = lhs.size() + rhs.size()+1; // +1 for null character
   
-  char* NewData= new char[sum];
+  char* NewData= new char[sum]; // to store the characters
   int count=0;
 
   for(int i = 0 ; i<(lhs.size()); i++) {
@@ -243,25 +246,25 @@ inline String operator+ (const String& lhs, const String& rhs)
 
   for(int i=0; i<rhs.size(); i++){
     NewData[i+count+1]=rhs.Data[i];
-
   }
 
-  NewData[(sum-1)]= '\0';
+  NewData[(sum-1)]= '\0'; // string must terminate w/ null character
   String* ret = new String(NewData);
 
   return *ret;
 }
 
-
-
+/* Return a new string from char* and string reference
+*/
 inline String operator+ (const char* lhs, const String& rhs)
 {
-int r_sz=0;
+  int r_sz=0; // to store the size of the char pointer
+
   while(lhs[r_sz] != '\0') {
     r_sz++;
   }
 
-  int sum3=rhs.size()+r_sz+1;
+  int sum3=rhs.size()+r_sz+1; // size of the new string to return
 
   char* NewData= new char[sum3];
   int count=0;
@@ -281,7 +284,8 @@ int r_sz=0;
   return *ret;
 }
 
-
+/* Operator overloaded 
+ */
 inline String operator+ (const String& lhs, const char* rhs)
 {
   int r_sz=0;
@@ -310,12 +314,14 @@ inline String operator+ (const String& lhs, const char* rhs)
 }
 
 
-
+/* Return a reference to the char in position pos
+ */
 inline char& String::operator[] (size_t pos)
 {
   size_t tmp;
   char ret;
   
+  //default return if Size = pos
   if(pos==Size){
     ret='\0';
     char& ref_1=ret;
@@ -323,10 +329,12 @@ inline char& String::operator[] (size_t pos)
   } else {
     ret= Data[pos];  
     char& ref_2=ret;
-    return ref_2;
+    return ref_2; // return for character at position pos
   }
 }
 
+/* Operator overload
+ */
 inline const char& String::operator[] (size_t pos) const
 {
   size_t tmp;
@@ -343,14 +351,6 @@ inline const char& String::operator[] (size_t pos) const
   }
 }
 
-//Operator =
-
-/*inline String& String::operator= (const char* s) {
-  String*  ret = new String (s);
-  String& ref_ret= *ret;
-  return ref_ret;
-}*/
-
 
 inline String& String::operator= (char c)
 {
@@ -361,6 +361,7 @@ inline String& String::operator= (char c)
   //So size of char is 2
   Size = 2; 
 }
+
 
 inline String& String::operator= (const char* s)
 {
