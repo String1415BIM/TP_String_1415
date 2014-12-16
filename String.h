@@ -75,8 +75,9 @@ class String
     //                                Operators
     // =======================================================================
      
-    /* Returns a newly constructed string object with its value being the concatenation of the characters in lhs followed by those of rhs.
-     */
+    /* Returns a newly constructed string object with its value being the 
+    concatenation of the characters in lhs followed by those of rhs.*/
+     
 
     friend inline String operator+ (const String& lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, char rhs);
@@ -84,8 +85,7 @@ class String
     friend inline String operator+ (const char* lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, const char* rhs);
     
-    /* Returns a reference to the character at position pos in the string. 
-     */
+    /* Returns a reference to the character at position pos in the string. */
     inline char& operator[] (size_t pos);
     inline const char& operator[] (size_t pos) const;
 
@@ -94,7 +94,7 @@ class String
     inline String& operator= (const char* s);
     inline String& operator= (char c);
 
-    /* Assigns a new value to a string, from a c-string (str)*/
+    /* Assigns a new value to the string, from a c-string */
     inline String& operator= (const String& str);
 
 
@@ -102,11 +102,16 @@ class String
     //                              Public Methods
     // =======================================================================
     
+   /*Calculation of the size of the c-string, including '\0'*/
+    unsigned int sizeCalculation(void);
+    
+    /*Returns the length of the string, in terms of bytes .*/
+    size_t length() const;
+    size_t size(void) const;
     
     /* Returns the maximum length the string can reach.
     */
     size_t max_size(void) const;
-
 
     /*Resizes the string to a length of n characters.
     */
@@ -138,26 +143,11 @@ class String
     /* Returns a pointer on a c-string. It is a getter on string variable*/
     char * c_str(void) const;
 
-    /*Calculation of the size of the c-string*/
-    unsigned int sizeCalculation(void);
-
-    /*Returns the size of string*/
-    size_t size(void) const;
-    
-    /*Returns the length of the string, in terms of bytes.*/
-    size_t length() const;
-
-
- 
-
-    /* Erase string contents and affects 0 to size*/
+    /*Erase string contents and affects 1 to Size*/
     void clear(void);
     // =======================================================================
     //                             Public Attributes
     // =======================================================================
-
-
-
 
 
   protected:
@@ -165,8 +155,6 @@ class String
     // =======================================================================
     //                            Forbidden Constructors
     // =======================================================================
-
-
 
     // =======================================================================
     //                              Protected Methods
@@ -221,7 +209,6 @@ inline String operator+ (char rhs, const String& lhs)
   for(int i=1; i<SizeRet; i++)
   {
     DataRet[i]=lhs.Data[i-1];
-    printf("%c\n", DataRet[i-1]);
   }
   DataRet[SizeRet-1]='\0';
   String* ValRet=new String(DataRet);
