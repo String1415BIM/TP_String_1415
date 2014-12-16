@@ -59,6 +59,8 @@ class String
     // =======================================================================
     //                                Destructor
     // =======================================================================
+    
+    //Destroys the string object.
     virtual ~String(void);
 
     // =======================================================================
@@ -81,36 +83,19 @@ class String
     friend inline String operator+ (char rhs, const String& lhs);
     friend inline String operator+ (const char* lhs, const String& rhs);
     friend inline String operator+ (const String& lhs, const char* rhs);
+    
     /* Returns a reference to the character at position pos in the string. 
      */
     inline char& operator[] (size_t pos);
     inline const char& operator[] (size_t pos) const;
 
+    /*Assigns a new value to the string, replacing its current contents.
+    */
     inline String& operator= (const char* s);
     inline String& operator= (char c);
 
     /* Assigns a new value to a string, from a c-string (str)*/
     inline String& operator= (const String& str);
-
-
-    /*friend inline String operator+ (const String& lhs, const String& rhs);
-    friend inline String operator+ (const char* lhs, const String& rhs);
-    
-    //test
-    friend inline String operator+ (const String& lhs, const char*   rhs);
-
-   //Operateur +
-    inline String operator+ (char rhs);
-    //inline String operator+(const char* rhs);
-    
-
-    inline char& operator[] (size_t pos);
-
-    //Operator =
-    inline String& operator= (const char* s);
-    inline String& operator= (char c);
-    Assigns a new value to a string, from a c-string (str)
-    inline String& operator= (const String& str);*/
 
 
     // =======================================================================
@@ -159,6 +144,7 @@ class String
     /*Returns the size of string*/
     size_t size(void) const;
     
+    /*Returns the length of the string, in terms of bytes.*/
     size_t length() const;
 
 
