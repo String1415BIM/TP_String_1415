@@ -17,31 +17,14 @@
 #include <cstdlib>
 #include <string.h>
 
-
-
-// ===========================================================================
-//                                Project Files
-// ===========================================================================
-
-
-
-
 // ===========================================================================
 //                              Class declarations
 // ===========================================================================
 
 
-
-
-
-
 class String
 {
   public:
-    
-    // =======================================================================
-    //                                 Enums
-    // =======================================================================
     
     // =======================================================================
     //                               Constructors
@@ -107,18 +90,15 @@ class String
     */
     size_t max_size(void) const;
 
-
     /*Resizes the string to a length of n characters.
     */
     void resize (size_t n);
     void resize (size_t n, char c);
 
-
     /*Returns a reference to the character at position pos in the string.
     */
     char& at (size_t pos);
     const char& at (size_t pos) const;
-
 
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
@@ -147,9 +127,6 @@ class String
     /*Returns the length of the string, in terms of bytes.*/
     size_t length() const;
 
-
- 
-
     /* Erase string contents and affects 0 to size*/
     void clear(void);
     // =======================================================================
@@ -161,12 +138,6 @@ class String
 
 
   protected:
-
-    // =======================================================================
-    //                            Forbidden Constructors
-    // =======================================================================
-
-
 
     // =======================================================================
     //                              Protected Methods
@@ -183,16 +154,6 @@ class String
     unsigned int Size;
        
 };
-
-
-// ===========================================================================
-//                              Getters' definitions
-// ===========================================================================
-
-// ===========================================================================
-//                              Setters' definitions
-// ===========================================================================
-
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
@@ -333,7 +294,7 @@ inline char& String::operator[] (size_t pos)
   }
 }
 
-/* Operator overload
+/* Operator [] overload
  */
 inline const char& String::operator[] (size_t pos) const
 {
@@ -362,19 +323,21 @@ inline String& String::operator= (char c)
   Size = 2; 
 }
 
-
+/* Return a string reference containing the char pointer passed as parameter
+ */
 inline String& String::operator= (const char* s)
 {
-  delete[] Data;
+  delete[] Data; //empty the string stored
   int NewSize=0;
 
+  // To know the size of the the char pointer
   while(s[NewSize] != '\0'){
     NewSize++;
   }
   this->Size=NewSize;
   this->Capacity=NewSize;
-  Data= new char [NewSize];
-  memcpy(this->Data, s, NewSize*sizeof(char) );
+  Data= new char [NewSize]; // reallowing memory for the char pointer
+  memcpy(this->Data, s, NewSize*sizeof(char) ); // copy the datas in the memory allocated
   return *this;
 }
 
