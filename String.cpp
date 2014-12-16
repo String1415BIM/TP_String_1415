@@ -55,7 +55,7 @@ unsigned int String::sizeCalculation(void)
     {
       i++; 
     }
-    return (i+1);
+  return (i+1);
 }
 
 //Creation of constructor from a c-string
@@ -134,7 +134,7 @@ void String::resize (size_t n) //cas ou Size=n
 }
 
 
-void String::resize (size_t n, char c)
+void String::resize(size_t n, char c)
 {
   if (Size > n)
   {
@@ -243,7 +243,13 @@ size_t String::length() const
 
 void String::clear(void)
 {
-  Data[0]='\0';
+
+  int i=0;
+  while(at(i)!='\0')
+  {
+    Data[i]='\0';
+    i++;
+  }
   Size=1;
 }
 
