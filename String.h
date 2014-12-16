@@ -132,9 +132,9 @@ class String
 
 
     static unsigned int MAX_SIZE;
-    unsigned int Capacity;
+    unsigned int Capacity; /*Include '\0'*/
     char * Data;
-    unsigned int Size;
+    unsigned int Size; /*Include '\0'*/
        
 };
 // ===========================================================================
@@ -151,28 +151,34 @@ class String
  */
 inline String operator+ (const String& lhs, char rhs)
 {
+  /*Initialization of data which will compose the new String*/ 
   int SizeRet=lhs.size()+2; //size() doesn't include '\0'
   char * DataRet=new char [SizeRet];
+
   memcpy(DataRet, lhs.Data, SizeRet);
   DataRet[SizeRet-2]=rhs;
   DataRet[SizeRet-1]='\0';
-  String* ValRet=new String(DataRet);
 
+  /*Creation of String with corresponding data*/
+  String* ValRet=new String(DataRet);
   return *ValRet;
 }
 
 inline String operator+ (char rhs, const String& lhs)
 {
+  /*Initialization of data which will compose the new String*/ 
   int SizeRet=lhs.size()+2;
   char * DataRet=new char [SizeRet];
+
   DataRet[0]=rhs;
   for(int i=1; i<SizeRet; i++)
   {
     DataRet[i]=lhs.Data[i-1];
   }
   DataRet[SizeRet-1]='\0';
+
+  /*Creation of String with corresponding data*/
   String* ValRet=new String(DataRet);
-  
   return *ValRet;
 }
 

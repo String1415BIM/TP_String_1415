@@ -51,7 +51,7 @@ String::String(void)
 {
   Data = NULL;
   Size = 1;	//including '\0'
-  Capacity= 0;	
+  Capacity= 1;	
 }
 
 
@@ -109,12 +109,45 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 
+//Methods which looks like getters
 
-
+  /*Getter on Capacity*/
+size_t String::capacity (void) const
+{
+  return (Capacity-1)*sizeof(char);
+}
+  /*Getter on Data*/
+char * String::c_str(void) const
+{
+    return Data;
+}
+  /*Getter on Max_Size*/
 size_t String::max_size(void) const
 {
   return MAX_SIZE;
 }
+  /*Getter on Size*/
+size_t String::size(void) const
+{
+  return (Size-1);
+}
+
+size_t String::length() const
+{
+  return (Size-1);
+}
+
+//Methods which looks like setters
+
+  /*Setter on Capacity*/
+void String::reserve (size_t n)
+{
+  if(Capacity<n) 
+  {
+    Capacity=n+1;
+  }
+}
+
 
 
 void String::resize (size_t n) //cas ou Size=n
@@ -140,7 +173,6 @@ void String::resize (size_t n) //cas ou Size=n
   }
 
 }
-
 
 void String::resize(size_t n, char c)
 {
@@ -204,28 +236,6 @@ const char& String::at (size_t pos) const
   return s; 
 }
 
-
-// Getter on capacity
-size_t String::capacity (void) const
-{
-  return (Capacity-1)*sizeof(char);
-}
-
-// Setter on Capacity
-void String::reserve (size_t n)
-{
-  if(Capacity<n) 
-  {
-    Capacity=n+1;
-  }
-}
-
-
-char * String::c_str(void) const
-{
-    return Data;
-}
-
 // If Size=1 -> String is empty -> bool=1 // else bool=0
 bool String::empty (void) const
 {
@@ -235,19 +245,6 @@ bool String::empty (void) const
   }
   return ret;
 }
-
-
-size_t String::size(void) const
-{
-	return (Size-1);
-}
-
-size_t String::length() const
-{
-  return (Size-1);
-}
-
-
 
 void String::clear(void)
 {
