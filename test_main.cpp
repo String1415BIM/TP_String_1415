@@ -126,9 +126,11 @@ int main(int argc, char* argv[])
   printf("%s, size=%d\n", testo->c_str(), testo->size());
 
 
+
   //-------------------------------------------------------------------------------
   //test OPERATOR
   //-------------------------------------------------------------------------------
+
 
 
   //-------------------------------------------------------------------------------
@@ -180,7 +182,7 @@ int main(int argc, char* argv[])
 
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
-  char* char_test = " foo";
+  char char_test[] = " foo";
     
     // Test of operator +(string)
   
@@ -206,7 +208,7 @@ int main(int argc, char* argv[])
   printf("%s \n", myString1.c_str() );
 
 
-  char* toPut = "Hello";
+  char toPut[] = "Hello";
   printf("%s \n", toPut );
   myString1= toPut;
 
