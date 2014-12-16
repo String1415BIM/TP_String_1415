@@ -243,7 +243,6 @@ size_t String::length() const
 
 void String::clear(void)
 {
-
   int i=0;
   while(at(i)!='\0')
   {

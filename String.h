@@ -47,13 +47,13 @@ class String
     //                               Constructors
     // =======================================================================
     
-    //default constructor
+    //Default constructor
     String(void);
 
     //c-string constructor
     String(const char * s);
     
-    //copy consructor
+    //Copy consructor
     String(const String& str);
 
     // =======================================================================
@@ -64,9 +64,7 @@ class String
     // =======================================================================
     //                            Accessors: getters
     // =======================================================================
-    inline unsigned int getSize(void) const;
-    inline char * getString(void) const;
-    inline char getLetter(int pos) const;
+
     // =======================================================================
     //                            Accessors: setters
     // =======================================================================
@@ -204,20 +202,7 @@ class String
 // ===========================================================================
 //                              Getters' definitions
 // ===========================================================================
-inline unsigned int String::getSize(void) const
-{
-  return Size;
-}
 
-inline char * String::getString(void) const
-{
-  return Data;
-}
-
-inline char String::getLetter(int pos) const
-{
-  return Data[pos];
-}
 // ===========================================================================
 //                              Setters' definitions
 // ===========================================================================
@@ -272,40 +257,16 @@ inline String operator+ (const String& lhs, const String& rhs)
 
   for(int i=0; i<rhs.size(); i++){
     NewData[i+count+1]=rhs.Data[i];
+
   }
 
   NewData[(sum-1)]= '\0';
   String* ret = new String(NewData);
 
-return *ret;
+  return *ret;
 }
 
-inline String operator+ (const String& lhs, const char* rhs)
-{
-  int r_sz=0;
-  while(rhs[r_sz] != '\0') {
-    r_sz++;
-  }
 
-  int sum2=lhs.size()+r_sz+1;
-
-  char* NewData= new char[sum2];
-  int count=0;
-
-  for(int i = 0 ; i<(lhs.size()); i++) {
-    NewData[i]=lhs.Data[i];
-    count=i;
-  }
-
-  for(int i=0; i<r_sz; i++){
-    NewData[i+count+1]=rhs[i];
-  }
-  
-  NewData[(sum2-1)]='\0';
-  String* ret = new String(NewData);
-
-return *ret;
-}
 
 inline String operator+ (const char* lhs, const String& rhs)
 {
@@ -331,8 +292,37 @@ int r_sz=0;
   NewData[(sum3-1)]='\0';
   String* ret = new String(NewData);
 
-return *ret;
+  return *ret;
 }
+
+
+inline String operator+ (const String& lhs, const char* rhs)
+{
+  int r_sz=0;
+  while(rhs[r_sz] != '\0') {
+    r_sz++;
+  }
+
+  int sum2=lhs.size()+r_sz+1;
+
+  char* NewData= new char[sum2];
+  int count=0;
+
+  for(int i = 0 ; i<(lhs.size()); i++) {
+    NewData[i]=lhs.Data[i];
+    count=i;
+  }
+
+  for(int i=0; i<r_sz; i++){
+    NewData[i+count+1]=rhs[i];
+  }
+  
+  NewData[(sum2-1)]='\0';
+  String* ret = new String(NewData);
+
+  return *ret;
+}
+
 
 
 inline char& String::operator[] (size_t pos)
