@@ -17,31 +17,14 @@
 #include <cstdlib>
 #include <string.h>
 
-
-
-// ===========================================================================
-//                                Project Files
-// ===========================================================================
-
-
-
-
 // ===========================================================================
 //                              Class declarations
 // ===========================================================================
 
 
-
-
-
-
 class String
 {
   public:
-    
-    // =======================================================================
-    //                                 Enums
-    // =======================================================================
     
     // =======================================================================
     //                               Constructors
@@ -62,14 +45,6 @@ class String
     
     //Destroys the string object.
     virtual ~String(void);
-
-    // =======================================================================
-    //                            Accessors: getters
-    // =======================================================================
-
-    // =======================================================================
-    //                            Accessors: setters
-    // =======================================================================
 
     // =======================================================================
     //                                Operators
@@ -118,12 +93,10 @@ class String
     void resize (size_t n);
     void resize (size_t n, char c);
 
-
     /*Returns a reference to the character at position pos in the string.
     */
     char& at (size_t pos);
     const char& at (size_t pos) const;
-
 
     /* Returns the size of the storage space currently allocated for the string, expressed in terms of bytes.
      */
@@ -143,22 +116,13 @@ class String
     /* Returns a pointer on a c-string. It is a getter on string variable*/
     char * c_str(void) const;
 
+
     /*Erase string contents and affects 1 to Size*/
     void clear(void);
-    // =======================================================================
-    //                             Public Attributes
-    // =======================================================================
 
-
+    
+  
   protected:
-
-    // =======================================================================
-    //                            Forbidden Constructors
-    // =======================================================================
-
-    // =======================================================================
-    //                              Protected Methods
-    // =======================================================================
 
     // =======================================================================
     //                             Protected Attributes
@@ -171,24 +135,18 @@ class String
     unsigned int Size;
        
 };
-
-
-// ===========================================================================
-//                              Getters' definitions
-// ===========================================================================
-
-// ===========================================================================
-//                              Setters' definitions
-// ===========================================================================
-
 // ===========================================================================
 //                             Operators' definitions
 // ===========================================================================
 
 
 
-//Operator +
-//Add  a char
+/*****************************************************************************
+/*                               Operator +
+/*****************************************************************************                               
+
+/*Add  a char
+ */
 inline String operator+ (const String& lhs, char rhs)
 {
   int SizeRet=lhs.size()+2; //size() doesn't include '\0'
@@ -216,11 +174,13 @@ inline String operator+ (char rhs, const String& lhs)
   return *ValRet;
 }
 
+/* Return a new string from two string references 
+ */
 inline String operator+ (const String& lhs, const String& rhs)
 {
-  int sum = lhs.size() + rhs.size()+1;
+  int sum = lhs.size() + rhs.size()+1; // +1 for null character
   
-  char* NewData= new char[sum];
+  char* NewData= new char[sum]; // to store the characters
   int count=0;
 
   for(int i = 0 ; i<(lhs.size()); i++) {
@@ -230,25 +190,25 @@ inline String operator+ (const String& lhs, const String& rhs)
 
   for(int i=0; i<rhs.size(); i++){
     NewData[i+count+1]=rhs.Data[i];
-
   }
 
-  NewData[(sum-1)]= '\0';
+  NewData[(sum-1)]= '\0'; // string must terminate w/ null character
   String* ret = new String(NewData);
 
   return *ret;
 }
 
-
-
+/* Return a new string from char* and string reference
+*/
 inline String operator+ (const char* lhs, const String& rhs)
 {
-int r_sz=0;
+  int r_sz=0; // to store the size of the char pointer
+
   while(lhs[r_sz] != '\0') {
     r_sz++;
   }
 
-  int sum3=rhs.size()+r_sz+1;
+  int sum3=rhs.size()+r_sz+1; // size of the new string to return
 
   char* NewData= new char[sum3];
   int count=0;
@@ -268,7 +228,8 @@ int r_sz=0;
   return *ret;
 }
 
-
+/* Operator overloaded 
+ */
 inline String operator+ (const String& lhs, const char* rhs)
 {
   int r_sz=0;
@@ -296,13 +257,19 @@ inline String operator+ (const String& lhs, const char* rhs)
   return *ret;
 }
 
+/*****************************************************************************
+                               Operator []
+*/////////////////////////////////////////////////////////////////////////////
 
 
+/* Return a reference to the char in position pos
+ */
 inline char& String::operator[] (size_t pos)
 {
   size_t tmp;
   char ret;
   
+  //default return if Size = pos
   if(pos==Size){
     ret='\0';
     char& ref_1=ret;
@@ -310,10 +277,12 @@ inline char& String::operator[] (size_t pos)
   } else {
     ret= Data[pos];  
     char& ref_2=ret;
-    return ref_2;
+    return ref_2; // return for character at position pos
   }
 }
 
+/* Operator [] overload
+ */
 inline const char& String::operator[] (size_t pos) const
 {
   size_t tmp;
@@ -330,13 +299,10 @@ inline const char& String::operator[] (size_t pos) const
   }
 }
 
-//Operator =
 
-/*inline String& String::operator= (const char* s) {
-  String*  ret = new String (s);
-  String& ref_ret= *ret;
-  return ref_ret;
-}*/
+/*****************************************************************************
+                               Operator =
+*/////////////////////////////////////////////////////////////////////////////
 
 
 inline String& String::operator= (char c)
@@ -349,18 +315,21 @@ inline String& String::operator= (char c)
   Size = 2; 
 }
 
+/* Return a string reference containing the char pointer passed as parameter
+ */
 inline String& String::operator= (const char* s)
 {
-  delete[] Data;
+  delete[] Data; //empty the string stored
   int NewSize=0;
 
+  // To know the size of the the char pointer
   while(s[NewSize] != '\0'){
     NewSize++;
   }
   this->Size=NewSize;
   this->Capacity=NewSize;
-  Data= new char [NewSize];
-  memcpy(this->Data, s, NewSize*sizeof(char) );
+  Data= new char [NewSize]; // reallowing memory for the char pointer
+  memcpy(this->Data, s, NewSize*sizeof(char) ); // copy the datas in the memory allocated
   return *this;
 }
 
@@ -377,9 +346,6 @@ inline String& String::operator= (const String& str)
   return *this;
 }
 
-// ===========================================================================
-//                          Inline functions' definition
-// ===========================================================================
-
+/////////////////////////////////////////////////////////////////////////////////
 
 #endif // __STRING_H__
