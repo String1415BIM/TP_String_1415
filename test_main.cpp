@@ -143,15 +143,26 @@ int main(int argc, char* argv[])
 
 
   //Test on operators of Student 2
+  //operateur "="
   printf("Test Noelie operator \n");
-  String test_1=String("Team Rocket");
+  String test_1=String("TeamRocket");
   printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
   char a = 'a';
   test_1 = a;
   printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
+  //operateur "+"
+  String testo_1=String("TeamRocket2");
+  printf("%s (%d) + !\n", testo_1.c_str(), testo_1.size());
+  String string2= String ();
+  string2 =  testo_1+ "Yes";
+  printf("%s (%d) + !\n", string2.c_str(), string2.size());
 
 
   printf("Fin test Noelie operator \n");
+
+  
+
+
   //Test on operators of Student 3
   String test_op_1=String("test operat");
   String test_op_2=String("eur");
@@ -181,7 +192,7 @@ int main(int argc, char* argv[])
 
   printf("%s\n", myString1.c_str() );*/
 
-  printf("Finalement : %s\n", myString1.c_str() );
+  //printf("Finalement : %s\n", myString1.c_str() );
 
 
   return 0;
