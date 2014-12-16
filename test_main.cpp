@@ -45,27 +45,29 @@ int main(int argc, char* argv[])
   //-------------------------------------------------------------------------------
   //test C-STRING CONSTRUCTOR
   //-------------------------------------------------------------------------------
+  
+  //Test for constructor from a c-string
+  //Includes a test for c_str() & size()
   char mot[8] ="Bonjour";
   String* test_cstring = new String(mot);
-  printf("size=%d, word= %s\n", test_cstring->size(), test_cstring->c_str());
-
+  printf("C-string constructor, size  and c_str tests\n"); 
+  printf("size=%d, word= %s\n \n ", test_cstring->size(), test_cstring->c_str());
 
   //Test for the copy constructor
   printf("Copy constructor test \n");
   String model=String(mot);
   String test_copy=String(model);
-  printf("size=%d, word= %s\n", test_copy.size(), test_copy.c_str());
-
-  printf("%s\n",test_cstring->c_str()); 
-  printf("%d\n",test_cstring->size());
-
-
+  printf( "%s  (%d),\n\n", test_copy.c_str(), test_copy.size());
 
   //-------------------------------------------------------------------------------
   //test MAX_SIZE
   //-------------------------------------------------------------------------------
   printf("Max size test \n");
-  printf("max_size=%d \n",test_cstring->max_size());
+  printf("max_size=%d \n\n",test_cstring->max_size());
+
+  //-------------------------------------------------------------------------------
+  //test Size & C_STR
+  //-------------------------------------------------------------------------------
 
   //-------------------------------------------------------------------------------
   //test RESIZE
@@ -82,7 +84,7 @@ int main(int argc, char* argv[])
   printf("resize: %s \n",test_cstring->c_str());
 
   test_cstring->resize (10, 'a');
-  printf("resize: %s \n",test_cstring->c_str());
+  printf("resize: %s \n\n",test_cstring->c_str());
 
 
   //-------------------------------------------------------------------------------
@@ -113,16 +115,14 @@ int main(int argc, char* argv[])
   printf("Empty \n\n");
 
   printf("booleen of fulled string : %d \n",test_cstring->empty());
-  printf("boolean of empty string : %d \n",test_reserve->empty());
+  printf("boolean of empty string : %d \n\n",test_reserve->empty());
 
 
 
   //Test on clear method
-  char word[]="Link list";
-  String* testo=new String(word);
-  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  String* testo=new String("clean that");
   testo->clear();
-  printf("%s, size=%d\n", testo->c_str(), testo->size());
+  printf("After clear(): %s, size=%d\n\n", testo->c_str(), testo->size());
 
 
 
@@ -135,7 +135,8 @@ int main(int argc, char* argv[])
   //-------------------------------------------------------------------------------
   //operator "="
   //-------------------------------------------------------------------------------
-  
+
+  printf("----------------\n Operator = test\n\n");
   //   "=" operator with char type 
   printf("= operator with char type \n");
   String test_1=String("TeamRocket");
@@ -145,28 +146,27 @@ int main(int argc, char* argv[])
   printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
 
 
-  //Test on operators of Student 1
+  //Test on operator= of Student 1
   String test_operator1=String("Team Rocket");
-  printf("%s (%d) + !\n", test_operator1.c_str(), test_operator1.size());
   String test_operator2= String ();
-  printf("%s (%d)\n", test_operator2.c_str(), test_operator2.size());
+  test_operator2=test_operator1;
+  printf("= Operator from char: %s (%d)\n", test_operator2.c_str(), test_operator2.size());
 
 
   // "=" operator with char* type
-  
   String myString1=String("Bonjour");
   printf("%s will become ", myString1.c_str() );
   char* toPut = "Hello";
   printf("%s. ", toPut );
   myString1= toPut;
-  printf("Finally : %s\n", myString1.c_str() );
+  printf("Finally : %s\n\n", myString1.c_str() );
 
 
   //-------------------------------------------------------------------------------
   //operator "+"
   //-------------------------------------------------------------------------------
   
-  
+  printf("----------------\n Operator + test\n\n");
   // "+" operator with char* type
 
   String testo_1=String("TeamRocket2");
@@ -182,7 +182,17 @@ int main(int argc, char* argv[])
   printf("test_op_1:  %s + test_op_2: %s = ", test_op_1.c_str(), test_op_2.c_str() );
   String returned_Str= test_op_1 + test_op_2; 
   printf("%s \n", returned_Str.c_str() );
- 
+
+  // "+" operator with char type
+  printf("Add a char to a String\n");
+  test_operator2.clear();
+  test_operator2 = test_operator1 + '!';
+  test_operator2 = '?' + test_operator1;
+  printf("%s (%d, capacity=%d)\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
+  test_operator2.clear();
+  test_operator2 = test_operator1 +'!';
+  printf("%s (%d, capacity=%d)\n\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
+
 
   //-------------------------------------------------------------------------------
   //operator "[]"
@@ -194,13 +204,7 @@ int main(int argc, char* argv[])
   printf("Character null : %c\n", test_operator1[12] );
 
 
-
-
-
-  //student1
-  test_operator2 = test_operator1 + '!';
-  test_operator2 = '?' + test_operator1;
-  printf("%s (%d, capacity=%d)\n", test_operator2.c_str(), test_operator2.size(), test_operator2.capacity());
+  
 
 
   return 0;
