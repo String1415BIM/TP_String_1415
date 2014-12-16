@@ -15,7 +15,7 @@
 #include <string.h>
 #include "String.h"
 #include <stdbool.h>
-#include <iostream>
+
 
 // ===========================================================================
 //                               Static Attributes
