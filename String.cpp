@@ -26,20 +26,15 @@
 // ===========================================================================
 //                                   Libraries
 // ===========================================================================
-
-
+#include <string.h>
+#include <stdexcept>
+#include <cstdio>
+#include <cstdlib>
 
 // ===========================================================================
 //                                 Project Files
 // ===========================================================================
 #include "String.h"
-#include <cstdio>
-#include <cstdlib>
-#include <string.h>
-#include <stdexcept>
-
-
-
 
 //############################################################################
 //                                                                          
@@ -114,6 +109,7 @@ String::String(const String& str)
 // ===========================================================================
 //                                  Destructor
 // ===========================================================================
+//Destroy the memory allocated for content
 String::~String(void)
 {
   if (Data!=NULL)
@@ -127,12 +123,45 @@ String::~String(void)
 //                                 Public Methods
 // ===========================================================================
 
+//Methods which looks like getters
 
-
+  /*Getter on Capacity*/
+size_t String::capacity(void) const
+{
+  return (Capacity-1)*sizeof(char);
+}
+  /*Getter on Data*/
+char * String::c_str(void) const
+{
+    return Data;
+}
+  /*Getter on Max_Size*/
 size_t String::max_size(void) const
 {
   return MAX_SIZE;
 }
+  /*Getter on Size*/
+size_t String::size(void) const
+{
+  return (Size-1);
+}
+
+size_t String::length() const
+{
+  return (Size-1);
+}
+
+//Methods which looks like setters
+
+  /*Setter on Capacity*/
+void String::reserve(size_t n)
+{
+  if(Capacity<n) 
+  {
+    Capacity=n+1;
+  }
+}
+
 
 
 void String::resize(size_t n) //cas ou Size=n
@@ -164,7 +193,6 @@ void String::resize(size_t n) //cas ou Size=n
   }
 
 }
-
 
 void String::resize(size_t n, char c)
 {
@@ -264,8 +292,8 @@ char * String::c_str(void) const
 }
 
 
+// If Size=1 -> String is empty -> bool=1 // else bool=0
 bool String::empty(void) const
-
 {
   bool ret = 0;
   if (Size==1){
@@ -273,19 +301,6 @@ bool String::empty(void) const
   }
   return ret;
 }
-
-
-size_t String::size(void) const
-{
-	return (Size-1);
-}
-
-size_t String::length() const
-{
-  return (Size-1);
-}
-
-
 
 void String::clear(void)
 {
@@ -299,13 +314,3 @@ void String::clear(void)
 }
 
 
-
-
-
-// ===========================================================================
-//                                Protected Methods
-// ===========================================================================
-
-// ===========================================================================
-//                               Non inline accessors
-// ===========================================================================
