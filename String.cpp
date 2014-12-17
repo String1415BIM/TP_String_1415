@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //****************************************************************************
 //
 //
@@ -151,18 +135,6 @@ size_t String::length() const
   return (Size-1);
 }
 
-//Methods which looks like setters
-
-  /*Setter on Capacity*/
-void String::reserve(size_t n)
-{
-  if(Capacity<n) 
-  {
-    Capacity=n+1;
-  }
-}
-
-
 
 void String::resize(size_t n) //cas ou Size=n
 {
@@ -265,12 +237,14 @@ const char& String::at(size_t pos) const
 }
 
 
-
 size_t String::capacity(void) const
 {
   return (Capacity-1)*sizeof(char);
 }
 
+
+//Methods which looks like setters
+/*Setter on Capacity*/
 void String::reserve(size_t n)
 {
   //Warnings
