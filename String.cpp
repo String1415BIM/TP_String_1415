@@ -114,6 +114,7 @@ size_t String::capacity(void) const
 {
   return (Capacity-1)*sizeof(char);
 }
+
   /*Getter on Data*/
 char * String::c_str(void) const
 {
@@ -224,14 +225,8 @@ const char& String::at(size_t pos) const
     throw std::out_of_range("Index value should be positive and under the string length.\n");
   }
   static char s = '\0';
-  s = Data[i];
+  s = Data[pos];
   return s; 
-}
-
-
-size_t String::capacity(void) const
-{
-  return (Capacity-1)*sizeof(char);
 }
 
 
@@ -249,12 +244,6 @@ void String::reserve(size_t n)
   {
     Capacity=n+1;
   }
-}
-
-
-char * String::c_str(void) const
-{
-    return Data;
 }
 
 
