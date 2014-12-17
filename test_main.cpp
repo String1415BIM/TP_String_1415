@@ -17,12 +17,8 @@
 #include <stdbool.h>
 #include <iostream>
 
-// ===========================================================================
-//                               Static Attributes
-// ===========================================================================
 
 
-unsigned int String::MAX_SIZE = 100;
 // ===========================================================================
 //                             Include Project Files
 // ===========================================================================
@@ -114,7 +110,7 @@ int main(int argc, char* argv[])
 
   printf("Empty test \n");
   printf("booleen : %d \n",test_cstring->empty());
-  printf("booleen : %d \n",def_string->empty());
+  printf("booleen : %d \n",test->empty());
 
 
 
@@ -216,7 +212,8 @@ int main(int argc, char* argv[])
 
 //  printf("Finalement : %s\n", myString1.c_str() );
 
-
+  //End of tests with tes_cstring
+  delete test_cstring;
 
   return 0;
 
@@ -229,26 +226,5 @@ int main(int argc, char* argv[])
 // ===========================================================================
 
 
-void test_student_2(void)
-{
-
-
-
-
-
-
-
-
-
-
-  
-  
-
-
-
-
-
-  return 0;
-}
 
 
