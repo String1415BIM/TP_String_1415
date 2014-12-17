@@ -208,7 +208,7 @@ char& String::at(size_t pos)
   //Warnings index is non correct
   if ((pos >= Size)||(pos<0))
   {
-    throw std::out_of_range("Index asked is more than the string length.\n");
+    throw std::out_of_range("Index value should be positive and under the string length.\n");
   }
   static char s = '\0';
   s = Data[pos];
@@ -219,20 +219,12 @@ char& String::at(size_t pos)
 const char& String::at(size_t pos) const
 {
   //Warnings
-  if (pos >= Size)
+  if (pos >= Size || pos<0)
   {
-    throw std::out_of_range("Index value asked is more than the string length.\n");
+    throw std::out_of_range("Index value should be positive and under the string length.\n");
   }
   static char s = '\0';
-  unsigned int i=0;
-  while(Data[i]!='\0')
-  {
-    if (pos == i)
-    {
-     s = Data[i];
-    }
-    i++;
-  }
+  s = Data[i];
   return s; 
 }
 
