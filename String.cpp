@@ -51,6 +51,8 @@
 //                         Definition of static attributes
 // ===========================================================================
 
+size_t String::MAX_SIZE = 100;
+
 // ===========================================================================
 //                                  Constructors
 // ===========================================================================
@@ -60,7 +62,7 @@ String::String(void)
 {
   Data = NULL;
   Size = 1;	//including '\0'
-  Capacity= 0;	
+  Capacity= 1;	
 }
 
 
@@ -86,6 +88,14 @@ String::String(const char * s)
   Size= Size_temp +1;
   //Minimum capacity set at size value
   Capacity= Size;
+
+  //Warning MAX_SIZE
+  if (Capacity>MAX_SIZE)
+  {
+    printf("Please enter a string in argument which size is under %d.\n", MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
+
   //Copy s into a String object
   Data = new char [Size];
   memcpy(Data,s,Capacity*sizeof(*Data));	
@@ -125,8 +135,14 @@ size_t String::max_size(void) const
 }
 
 
-void String::resize (size_t n) //cas ou Size=n
+void String::resize(size_t n) //cas ou Size=n
 {
+  //Warnings
+  if (n>MAX_SIZE)
+  {
+     printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
+     exit(EXIT_FAILURE);
+  }
   if (Size > n)
   {
     int i; 
@@ -152,6 +168,13 @@ void String::resize (size_t n) //cas ou Size=n
 
 void String::resize(size_t n, char c)
 {
+  //Warnings
+  if (n>MAX_SIZE)
+  {
+     printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
+     exit(EXIT_FAILURE);
+  }
+  //else
   if (Size > n)
   {
     int i; 
@@ -180,21 +203,26 @@ void String::resize(size_t n, char c)
   }
 }
 
-char& String::at (size_t pos)
+char& String::at(size_t pos)
 {
-  static char s = '\0';
-  s = Data[pos];
-  //If index is non correct
+  //Warnings index is non correct
   if ((pos >= Size)||(pos<0))
   {
     throw std::out_of_range("Index asked is more than the string length.\n");
   }
+  static char s = '\0';
+  s = Data[pos];
   return s; 
 }
 
 
-const char& String::at (size_t pos) const
+const char& String::at(size_t pos) const
 {
+  //Warnings
+  if (pos >= Size)
+  {
+    throw std::out_of_range("Index value asked is more than the string length.\n");
+  }
   static char s = '\0';
   unsigned int i=0;
   while(Data[i]!='\0')
@@ -205,22 +233,24 @@ const char& String::at (size_t pos) const
     }
     i++;
   }
-  if (pos >= Size)
-  {
-    throw std::out_of_range("Index value asked is more than the string length.\n");
-  }
   return s; 
 }
 
 
 
-size_t String::capacity (void) const
+size_t String::capacity(void) const
 {
   return (Capacity-1)*sizeof(char);
 }
 
-void String::reserve (size_t n)
+void String::reserve(size_t n)
 {
+  //Warnings
+  if (n>MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
   if(Capacity<n) 
   {
     Capacity=n+1;
@@ -234,7 +264,7 @@ char * String::c_str(void) const
 }
 
 
-bool String::empty (void) const
+bool String::empty(void) const
 
 {
   bool ret = 0;
