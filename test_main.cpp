@@ -143,24 +143,24 @@ int main(int argc, char* argv[])
   printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
   char a = 'a';
   test_1 = a;
-  printf("%s (%d) + !\n", test_1.c_str(), test_1.size());
+  printf("%s (%d) + !\n\n", test_1.c_str(), test_1.size());
 
 
   //Test on operator= of Student 1
   String test_operator1=String("Team Rocket");
   String test_operator2= String ();
   test_operator2=test_operator1;
-  printf("= Operator from char: %s (%d)\n", test_operator2.c_str(), test_operator2.size());
+  printf("= Operator from char: %s (%d)\n\n", test_operator2.c_str(), test_operator2.size());
 
 
   // "=" operator with char* type
   String myString1=String("Bonjour");
-  printf("%s will become ", myString1.c_str() );
+  printf("(String)  %s will become ", myString1.c_str() );
   char* toPut = "Hello";
-  printf("%s. ", toPut );
+  printf("(char*)  %s .\n ", toPut );
   myString1= toPut;
-  printf("Finally : %s\n\n", myString1.c_str() );
-
+  printf("test of =(char*) operator \n ");
+  printf("Finally : %s  \n\n", myString1.c_str() );
 
   //-------------------------------------------------------------------------------
   //operator "+"
@@ -173,15 +173,15 @@ int main(int argc, char* argv[])
   printf("%s (%d) + !\n", testo_1.c_str(), testo_1.size());
   String string2= String ();
   string2 =  testo_1+ "Yes";
-  printf("%s (%d) + !\n", string2.c_str(), string2.size());
+  printf("%s (%d) + !\n\n", string2.c_str(), string2.size());
 
 
   // "+" operator with string type
   String test_op_1 = "Hel";
   String test_op_2 = "lo";
-  printf("test_op_1:  %s + test_op_2: %s = ", test_op_1.c_str(), test_op_2.c_str() );
+  printf("(string) test_op_1:  %s (%d) + (string) test_op_2: %s (%d) = ", test_op_1.c_str(),test_op_1.size(), test_op_2.c_str(), test_op_2.size() );
   String returned_Str= test_op_1 + test_op_2; 
-  printf("%s \n", returned_Str.c_str() );
+  printf("%s (%d)\n\n", returned_Str.c_str(), returned_Str.size() );
 
   // "+" operator with char type
   printf("Add a char to a String\n");
@@ -197,16 +197,16 @@ int main(int argc, char* argv[])
   //-------------------------------------------------------------------------------
   //operator "[]"
   //-------------------------------------------------------------------------------
-  
+  printf("----------------\n Operator [] test\n\n");
   for (int i=0; i<=returned_Str.size(); i++) {
-    printf("%c\n", returned_Str[i] );
+    printf("[%d]= '%c'\n", i,returned_Str[i] );
   }
-  printf("Character null : %c\n", test_operator1[12] );
+  printf("Character null [12] : '%c'\n", test_operator1[12] );
 
 
 
   //End of tests with tes_cstring
-  delete test_cstring;
+  //delete test_cstring;
 
 
 

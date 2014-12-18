@@ -41,7 +41,7 @@ String::String(void)
 {
   Data = NULL;
   Size = 1;	//including '\0'
-  Capacity= 1;	
+  Capacity= 1;	// including '\0'
 }
 
 
@@ -128,7 +128,7 @@ size_t String::max_size(void) const
   /*Getter on Size*/
 size_t String::size(void) const
 {
-  return (Size-1);
+  return (Size-1)*sizeof(char);
 }
 
 size_t String::length() const

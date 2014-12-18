@@ -117,7 +117,7 @@ class String
       In all other cases, it is taken as a non-binding request to shrink the string capacity:
       the container implementation is free to optimize otherwise and leave the string with a capacity greater than n.
     */
-    void reserve(size_t n = 0);
+    void reserve(size_t n = 0); // by default, capacity is at least 1, for null character at the end
 
     /* Returns a pointer on a c-string. It is a getter on string variable*/
     char * c_str(void) const;
@@ -204,7 +204,6 @@ inline String operator+(const String& lhs, const String& rhs)
   for(int i=0; i<rhs.size(); i++){
     NewData[i+count+1]=rhs.Data[i];
   }
-
   NewData[(sum-1)]= '\0'; // string must terminate w/ null character
   String* ret = new String(NewData);
 
@@ -296,7 +295,6 @@ inline char& String::operator[](size_t pos)
     // return for character at position pos
     return ref_2; 
   }
-
 }
 
 /* Operator [] overload
@@ -330,7 +328,6 @@ inline const char& String::operator[](size_t pos) const
 
 inline String& String::operator=(char c)
 {
-
   this->clear();
   this->Data[0] = c;
   //Size function return (Size-1)
@@ -349,10 +346,12 @@ inline String& String::operator=(const char* s)
   while(s[NewSize] != '\0'){
     NewSize++;
   }
-  this->Size=NewSize;
-  this->Capacity=NewSize;
-  Data= new char [NewSize]; // reallowing memory for the char pointer
-  memcpy(this->Data, s, NewSize*sizeof(char) ); // copy the datas in the memory allocated
+  
+  Data= new char [NewSize+1]; // reallowing memory for the char pointer
+  memcpy(this->Data, s, (NewSize+1)*sizeof(char) ); // copy the datas in the memory allocated
+  this->Data[NewSize]='\0';
+  this->Size=NewSize+1;
+  this->Capacity=NewSize+1;
   return *this;
 }
 
