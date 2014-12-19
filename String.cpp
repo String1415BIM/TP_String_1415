@@ -128,7 +128,7 @@ size_t String::max_size(void) const
   /*Getter on Size*/
 size_t String::size(void) const
 {
-  return (Size-1)*sizeof(char);
+  return (Size-1);
 }
 
 size_t String::length() const
