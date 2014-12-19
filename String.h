@@ -137,9 +137,9 @@ class String
 
 
     static size_t MAX_SIZE;
-    unsigned int Capacity;/*Include '\0'*/
+    unsigned int Capacity;//Include '\0'
     char * Data;
-    unsigned int Size; /*Include '\0'*/
+    unsigned int Size; //Include '\0'
        
 };
 // ===========================================================================
@@ -158,6 +158,11 @@ inline String operator+(const String& lhs, char rhs)
 {
   /*Initialization of data which will compose the new String*/ 
   int SizeRet=lhs.size()+2; //size() doesn't include '\0'
+  if(SizeRet+1> lhs.MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
   char * DataRet=new char [SizeRet];
 
   memcpy(DataRet, lhs.Data, SizeRet);
@@ -167,12 +172,19 @@ inline String operator+(const String& lhs, char rhs)
   /*Creation of String with corresponding data*/
   String* ValRet=new String(DataRet);
   return *ValRet;
+
 }
 
 inline String operator+(char rhs, const String& lhs)
 {
   /*Initialization of data which will compose the new String*/ 
   int SizeRet=lhs.size()+2;
+  if(SizeRet+1> lhs.MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
+
   char * DataRet=new char [SizeRet];
 
   DataRet[0]=rhs;
@@ -192,7 +204,11 @@ inline String operator+(char rhs, const String& lhs)
 inline String operator+(const String& lhs, const String& rhs)
 {
   int sum = lhs.size() + rhs.size()+1; // +1 for null character
-  
+  if(sum+1> lhs.MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
   char* NewData= new char[sum]; // to store the characters
   int count=0;
 
@@ -221,6 +237,11 @@ inline String operator+(const char* lhs, const String& rhs)
   }
 
   int sum3=rhs.size()+r_sz+1; // size of the new string to return
+  if(sum3+1> rhs.MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", rhs.MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
 
   char* NewData= new char[sum3];
   int count=0;
@@ -250,6 +271,11 @@ inline String operator+(const String& lhs, const char* rhs)
   }
 
   int sum2=lhs.size()+r_sz+1;
+    if(sum2+1> lhs.MAX_SIZE)
+  {
+    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    exit(EXIT_FAILURE);
+  }
 
   char* NewData= new char[sum2];
   int count=0;
@@ -346,7 +372,7 @@ inline String& String::operator=(const char* s)
   while(s[NewSize] != '\0'){
     NewSize++;
   }
-  
+
   Data= new char [NewSize+1]; // reallowing memory for the char pointer
   memcpy(this->Data, s, (NewSize+1)*sizeof(char) ); // copy the datas in the memory allocated
   this->Data[NewSize]='\0';

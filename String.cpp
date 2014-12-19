@@ -140,7 +140,7 @@ size_t String::length() const
 void String::resize(size_t n) //cas ou Size=n
 {
   //Warnings
-  if (n>MAX_SIZE)
+  if (n+1>MAX_SIZE)
   {
      printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
      exit(EXIT_FAILURE);
@@ -170,7 +170,7 @@ void String::resize(size_t n) //cas ou Size=n
 void String::resize(size_t n, char c)
 {
   //Warnings
-  if (n>MAX_SIZE)
+  if (n+1>MAX_SIZE)
   {
      printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
      exit(EXIT_FAILURE);
@@ -235,7 +235,7 @@ const char& String::at(size_t pos) const
 void String::reserve(size_t n)
 {
   //Warnings
-  if (n>MAX_SIZE)
+  if (n+1>MAX_SIZE)
   {
     printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", MAX_SIZE);
     exit(EXIT_FAILURE);
