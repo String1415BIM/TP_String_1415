@@ -146,7 +146,7 @@ int main(int argc, char* argv[])
   printf("%s (%d) + !\n\n", test_1.c_str(), test_1.size());
 
 
-  //Test on operator= of Student 1
+  //"=" operator with String type
   String test_operator1=String("Team Rocket");
   String test_operator2= String ();
   test_operator2=test_operator1;
@@ -160,7 +160,7 @@ int main(int argc, char* argv[])
   printf("(char*)  %s .\n ", toPut );
   myString1= toPut;
   printf("test of =(char*) operator \n ");
-  printf("Finally : %s  \n\n", myString1.c_str() );
+  printf("Finally : %s (%d)  \n\n", myString1.c_str(), myString1.size() );
 
   //-------------------------------------------------------------------------------
   //operator "+"
