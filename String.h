@@ -304,22 +304,19 @@ inline String operator+(const String& lhs, const char* rhs)
  */
 inline char& String::operator[](size_t pos)
 {
-  size_t tmp;
   char ret;
   
   //default return if Size = pos
   if(pos==Size)
   {
     ret='\0';
-    char& ref_1=ret;
-    return ref_1;
+    return ret;
   } 
   else 
   {
     ret= Data[pos];  
-    char& ref_2=ret;
-    // return for character at position pos
-    return ref_2; 
+    /* return for character at position pos */
+    return ret; 
   }
 }
 
@@ -332,17 +329,17 @@ inline const char& String::operator[](size_t pos) const
   {
     throw std::out_of_range("Index asked is more than the string length.\n");
   }
-  size_t tmp;
+  
   char ret;
   
   if(pos==Size){
     ret='\0';
-    const char& ref_1=ret;
-    return ref_1;
+    const char ret_2=ret;
+    return ret_2;
   } else {
-    ret= Data[pos];  
-    const char& ref_2=ret;
-    return ref_2;
+    ret= Data[pos];
+    const char ret_2=ret;  
+    return ret_2;
   }
 }
 
