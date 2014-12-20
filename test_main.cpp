@@ -201,14 +201,9 @@ int main(int argc, char* argv[])
   for (int i=0; i<=returned_Str.size(); i++) {
     printf("[%d]= '%c'\n", i,returned_Str[i] );
   }
-  printf("Character null [12] : '%c'\n", test_operator1[12] );
 
-
-
-  //End of tests with tes_cstring
-  //delete test_cstring;
-
-
+  int z = test_operator1.size();
+  printf("Character null [11] : '%c'\n", test_operator1[z] );
 
   return 0;
 

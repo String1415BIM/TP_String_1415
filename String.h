@@ -304,6 +304,13 @@ inline String operator+(const String& lhs, const char* rhs)
  */
 inline char& String::operator[](size_t pos)
 {
+  //Warnings index is non correct
+  if ((pos >= Size)||(pos<0))
+  {
+    throw std::out_of_range("Index asked is more than the string length.\n");
+  }
+  
+  /* Code of operator */
   char ret;
   
   //default return if Size = pos
@@ -329,16 +336,13 @@ inline const char& String::operator[](size_t pos) const
   {
     throw std::out_of_range("Index asked is more than the string length.\n");
   }
-  
-  char ret;
-  
+    
+  /* Code of operator */ 
   if(pos==Size){
-    ret='\0';
-    const char ret_2=ret;
+    const char ret_2= '\0';
     return ret_2;
   } else {
-    ret= Data[pos];
-    const char ret_2=ret;  
+    const char ret_2= Data[pos];  
     return ret_2;
   }
 }
