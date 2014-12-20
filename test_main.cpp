@@ -157,7 +157,7 @@ int main(int argc, char* argv[])
   String myString1=String("Bonjour");
   printf("(String)  %s will become ", myString1.c_str() );
   char* toPut = "Hello";
-  printf("(char*)  %s .\n ", toPut );
+  printf("(char*)  %s (5) .\n ", toPut );
   myString1= toPut;
   printf("test of =(char*) operator \n ");
   printf("Finally : %s (%d)  \n\n", myString1.c_str(), myString1.size() );

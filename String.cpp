@@ -137,7 +137,7 @@ size_t String::length() const
 }
 
 
-void String::resize(size_t n) //cas ou Size=n
+void String::resize(size_t n) 
 {
   //Warnings
   if (n+1>MAX_SIZE)
