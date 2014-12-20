@@ -71,7 +71,7 @@ String::String(const char * s)
   //Warning MAX_SIZE
   if (Capacity>MAX_SIZE)
   {
-    printf("Please enter a string in argument which size is under %d.\n", MAX_SIZE);
+    printf("Please enter a string in argument which size is under %ld.\n", MAX_SIZE);
     exit(EXIT_FAILURE);
   }
 
@@ -142,7 +142,7 @@ void String::resize(size_t n)
   //Warnings
   if (n+1>MAX_SIZE)
   {
-     printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
+     printf("The size in argument is greater than %ld (the MAX_SIZE allowed).\n",MAX_SIZE);
      exit(EXIT_FAILURE);
   }
   if (Size > n)
@@ -172,7 +172,7 @@ void String::resize(size_t n, char c)
   //Warnings
   if (n+1>MAX_SIZE)
   {
-     printf("The size in argument is greater than %d (the MAX_SIZE allowed).\n",MAX_SIZE);
+     printf("The size in argument is greater than %ld (the MAX_SIZE allowed).\n",MAX_SIZE);
      exit(EXIT_FAILURE);
   }
   //else
@@ -237,7 +237,7 @@ void String::reserve(size_t n)
   //Warnings
   if (n+1>MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", MAX_SIZE);
     exit(EXIT_FAILURE);
   }
   if(Capacity<n) 

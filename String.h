@@ -160,7 +160,7 @@ inline String operator+(const String& lhs, char rhs)
   int SizeRet=lhs.size()+2; //size() doesn't include '\0'
   if(SizeRet+1> lhs.MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
     exit(EXIT_FAILURE);
   }
   char * DataRet=new char [SizeRet];
@@ -181,7 +181,7 @@ inline String operator+(char rhs, const String& lhs)
   int SizeRet=lhs.size()+2;
   if(SizeRet+1> lhs.MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
     exit(EXIT_FAILURE);
   }
 
@@ -206,7 +206,7 @@ inline String operator+(const String& lhs, const String& rhs)
   int sum = lhs.size() + rhs.size()+1; // +1 for null character
   if(sum+1> lhs.MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
     exit(EXIT_FAILURE);
   }
   char* NewData= new char[sum]; // to store the characters
@@ -239,7 +239,7 @@ inline String operator+(const char* lhs, const String& rhs)
   int sum3=rhs.size()+r_sz+1; // size of the new string to return
   if(sum3+1> rhs.MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", rhs.MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", rhs.MAX_SIZE);
     exit(EXIT_FAILURE);
   }
 
@@ -273,7 +273,7 @@ inline String operator+(const String& lhs, const char* rhs)
   int sum2=lhs.size()+r_sz+1;
     if(sum2+1> lhs.MAX_SIZE)
   {
-    printf("The size reserved is greater than %d (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
+    printf("The size reserved is greater than %ld (the MAX_SIZE defined).\n", lhs.MAX_SIZE);
     exit(EXIT_FAILURE);
   }
 
